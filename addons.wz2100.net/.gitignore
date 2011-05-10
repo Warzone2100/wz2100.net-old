@@ -1,0 +1,4 @@
+# local clutter
+log/*
+cgi-bin/*
+htdocs/files/*

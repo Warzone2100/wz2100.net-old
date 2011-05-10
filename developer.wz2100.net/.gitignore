@@ -1,0 +1,8 @@
+# local clutter
+log/
+trac/
+*.git/
+warzone-svn-repo/
+git-test.log
+
+htdocs/favicon.ico

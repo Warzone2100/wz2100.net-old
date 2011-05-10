@@ -1,0 +1,10 @@
+# git clutter
+*.orig
+
+# repo clutter
+*.inc.php
+
+# Mac clutter
+.DS_Store
+Icon?
+._*

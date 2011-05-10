@@ -1,0 +1,19 @@
+# local clutter
+log/*
+cgi-bin/*
+htdocs/*
+!htdocs/theme/
+!htdocs/tools/
+!htdocs/.htaccess
+!htdocs/404.php
+!htdocs/favicon.ico
+!htdocs/robots.txt
+*.inc.php
+
+# git clutter
+*.orig
+
+# Mac clutter
+.DS_Store
+Icon?
+._*
