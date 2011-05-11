@@ -1,0 +1,114 @@
+body {
+	color: #536482;
+	background-color: #20354C;
+}
+
+/* ************************************************************************* */
+#overall-header {
+	float: right;
+	width: 100%;
+	background: #BBD9EE;
+	background-image: url("http://forums.wz2100.net/styles/se_square_left/theme/images/bg_header.gif");
+	font-size: 12px;
+	line-height: normal;
+    margin-bottom:10px;
+}
+
+#overall-header #overall-logo {
+	padding: 15px 0 0 20px;
+	margin-bottom: -20px;
+	border: none;
+}
+#overall-header #overall-logo-wrapper {
+	border: none;
+	display: block;
+}
+
+#overall-header ul {
+	margin: 0;
+	padding: 10px 10px 0 50px;
+	list-style: none;
+}
+
+#overall-header li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#overall-header ul a {
+	float: right;
+	background: url("http://static.wz2100.net/img/tabs/tableft.gif") no-repeat left top;
+	margin: 0;
+	padding: 0 0 0 4px;
+	text-decoration: none;
+}
+
+#overall-header ul a span {
+	float: right;
+	display: block;
+	background: url("http://static.wz2100.net/img/tabs/tabright.gif") no-repeat right top;
+	padding: 5px 15px 4px 6px;
+	color: #666;
+}
+
+#overall-header ul a span {
+	float: none;
+}
+
+#overall-header ul a:hover span {
+	color: #FF9834;
+}
+
+#overall-header ul a:hover {
+	background-position: 0% -42px;
+
+}
+
+#overall-header ul a:hover span {
+	background-position: 100% -42px;
+}
+
+/* ************************************************************************* */
+
+#g_cont {
+	padding: 15px 15px;
+	max-width: 910px;
+	margin: 10px auto 0 auto;
+	background: #fff;
+	border: 2px solid #666;
+}
+
+/* ************************************************************************* */
+
+div#g_foot {
+	width: 750px;
+	margin: 0 auto 10px auto;
+	text-align: center;
+}
+
+div#g_foot ul {
+	font-family: 'Lucida Grande',Verdana,Arial,Sans-Serif;
+	color: #eee;
+	text-align: center;
+	margin: 0;
+	padding-bottom: 4px;
+	padding-top: 5px;
+	padding-right: 5px;
+	font-size: 80%;
+}
+
+div#g_foot ul li {
+	display: inline;
+}
+
+div#g_foot ul li a {
+	padding: 0px 10px;
+	color: #eee;
+	text-decoration: none;
+}
+
+div#g_foot ul li a:hover {
+	color: #aaa;
+}
+

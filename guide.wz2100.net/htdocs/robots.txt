@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /1.10/
+Disallow: /new/
+Disallow: /2.1/
+Disallow: /2.2/
+Disallow: /2.3/
+Disallow: /ntw/

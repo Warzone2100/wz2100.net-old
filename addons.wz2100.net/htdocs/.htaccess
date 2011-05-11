@@ -1,0 +1,29 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+#RewriteLog "/home/wz/public_html/cache/rewrite.log"
+#RewriteLogLevel 5
+
+RewriteCond %{HTTP_HOST} ^www\.addons\.wz2100\.net$ [NC]
+RewriteRule ^(.*)$ http://addons.wz2100.net/$1 [R=301,L]
+
+ErrorDocument 404 /404.php
+
+#DirectoryIndex index.html index.php /fileman/dirindex.php
+
+# Root
+
+RewriteRule ^news\/?$ http://wz2100.net/news [R=301,L]
+RewriteRule ^news\/?([0-9]+)$ http://wz2100.net/news/$1 [R=301,L]
+RewriteRule ^warzonehome$ http://wz2100.net/ [R=301,L]
+
+#RewriteRule ^r/tech\-tree\-chart/?$ http://guide.wz2100.net/r/tech-tree [R=301,L]
+
+RewriteRule ^map\/([A-Za-z0-9\/-]*[A-Za-z0-9-])\/?$ index.php?p=view&fullid=map/$1 [L,QSA]
+RewriteRule ^mod\/([A-Za-z0-9\/-]*[A-Za-z0-9-])\/?$ index.php?p=view&fullid=mod/$1 [L,QSA]
+RewriteRule ^unapproved\/map\/([A-Za-z0-9\/-]*[A-Za-z0-9-])\/?$ index.php?p=view&fullid=unapproved/map/$1 [L,QSA]
+RewriteRule ^unapproved\/mod\/([A-Za-z0-9\/-]*[A-Za-z0-9-])\/?$ index.php?p=view&fullid=unapproved/mod/$1 [L,QSA]
+RewriteRule ^([A-Za-z0-9-]+)\/?$ index.php?p=$1 [L,QSA]
+RewriteRule ^([A-Za-z0-9-]+)\/([A-Za-z0-9\/-]*[A-Za-z0-9-])\/?$ index.php?p=$1&sub=$2 [L,QSA]
+
+</IfModule>

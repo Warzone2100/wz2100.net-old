@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: *
+
+#Disallow: /changeset/
+#Disallow: /report/
+#Disallow: /attachment/
+#Disallow: /log/
+#Disallow: /wiki/BadContent
+#Disallow: /wiki/BadIP

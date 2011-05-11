@@ -1,0 +1,777 @@
+/*
+ *
+ * A NEW WORLD ORDER
+ * Just kidding, this is just a new website design
+ *
+ * by Guangcong Luo <Zarel>
+ * 2010 Apr 19
+ *
+ * See http://wz2100.net/credits
+ *
+ */
+
+html,body,form,table,tbody,tr,td,th,img,iframe
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+table,tbody,tr,td,th
+{
+	border-collapse: collapse;
+}
+
+fieldset
+{
+	border: 1px solid #CCCCCC;
+}
+
+html
+{
+	height: 100%;
+}
+body
+{
+	font-family: 'Lucida Grande', Verdana, Arial, sans-serif;
+	font-size: 10pt;
+	height: 100%;
+	background: #FFFFFF;
+	color: #000000;
+}
+
+p
+{
+	margin: 0 0 1em 0;
+	padding: 0;
+}
+
+.warzone-content a
+{
+    color:#2A556B;
+    text-decoration:none;
+    border-bottom:1px solid #C6D4FF;
+}
+
+.warzone-content a:hover
+{
+    color:#1B3744;
+    border-bottom-color: #2A556B;
+}
+
+.warzone-content h1 a,
+.warzone-content h2 a,
+.warzone-content h3 a,
+.warzone-content a.img
+{
+	border-bottom: 0;
+}
+.warzone-content .news h2
+{
+	padding: 0;
+	border-bottom: 0;
+}
+.warzone-content .news h2 a
+{
+	display: block;
+	padding: 3px 5px 3px 5px;
+	margin: -3px -5px 0 -5px;
+    color: #3A657B;
+	background: transparent none;
+	border-bottom: 1px solid #99AADD;
+}
+.warzone-content .news h2 a:hover
+{
+	color: #001040;
+	background: #E5EEF0 none;
+	border-bottom: 1px solid #001040;
+}
+
+h1
+{
+	border-bottom: 2px solid #8899DD;
+	padding: 3px 0;
+	margin-top: 1em;
+	font-size: 14pt;
+	font-style: normal;
+	font-weight: bold;
+	color: #556699;
+}
+
+h2
+{
+	border-bottom: 1px solid #8899DD;
+	padding: 3px 0;
+	margin-top: 1em;
+	font-size: 12pt;
+	font-style: normal;
+	font-weight: bold;
+	color: #556699;
+}
+
+h3
+{
+	border-bottom: 1px solid #8899DD;
+	padding: 3px 0;
+	margin-top: 1em;
+	font-size: 11pt;
+	font-style: italic;
+	font-weight: bold;
+	color: #556699;
+}
+
+/** header **/
+
+#wrapper
+{
+	min-height: 100%;
+	position: relative;
+}
+
+#overall-header
+{
+	background: #4a433c none;
+	text-align: center;
+	font-size: 11pt;
+}
+
+.overall-header-home #overall-header
+{
+	background: transparent url(/theme/home-header-bg.png) no-repeat scroll center top;
+}
+.overall-header-home
+{
+	background: #3e4754 url(/theme/home-header-bg-repeat.png) repeat-x scroll left top;
+}
+.overall-header-guide #overall-header
+{
+	background: transparent url(/theme/guide-header-bg.png) no-repeat scroll center top;
+}
+.overall-header-guide
+{
+	background: #3e4754 url(/theme/guide-header-bg-repeat.png) repeat-x scroll left top;
+}
+.overall-header-addons #overall-header
+{
+	background: transparent url(/theme/addons-header-bg.png) no-repeat scroll center top;
+}
+.overall-header-addons
+{
+	background: #3e4754 url(/theme/addons-header-bg-repeat.png) repeat-x scroll left top;
+}
+
+#overall-header div
+{
+	padding: 5px 0;
+	text-align: center;
+}
+#overall-header div img
+{
+}
+#overall-header div a
+{
+	border: 0;
+	opacity: 1.0;
+	background: transparent;
+	text-decoration: none;
+}
+#overall-header div a:hover
+{
+	opacity: 0.85;
+	background: transparent;
+	text-decoration: none;
+}
+
+#overall-header ul
+{
+	display: block;
+	margin: 0;
+	padding: 5px 0 2px 0;
+	border-bottom: 1px solid #555555;
+	font-size: 1px;
+}
+#overall-header li
+{
+	display: inline;
+	margin: 0 1px;
+	padding: 0;
+	list-style: none;
+	font-size: 11pt;
+}
+#overall-header li a
+{
+	display: inline;
+
+	background: #FFFFFF none;
+	color: #555555;
+	border-top: 1px solid #555555;
+	border-left: 1px solid #555555;
+	border-right: 1px solid #555555;
+	border-bottom: 0;
+	padding: 3px 5px 2px 5px;
+
+	position: relative;
+	text-decoration: none;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+
+#overall-header li.tab-home a
+{
+	padding-left: 23px;
+	background: #FFFFFF url(/theme/icon-home.gif) no-repeat scroll 4px 4px;
+}
+#overall-header li.tab-download a
+{
+	padding-left: 23px;
+	background: #FFFFFF url(/theme/icon-download.gif) no-repeat scroll 4px 4px;
+}
+#overall-header li.tab-forum a
+{
+	padding-left: 23px;
+	background: #FFFFFF url(/theme/icon-forum.gif) no-repeat scroll 4px 4px;
+}
+#overall-header li.tab-faq a
+{
+	padding-left: 23px;
+	background: #FFFFFF url(/theme/icon-faq.gif) no-repeat scroll 4px 4px;
+}
+#overall-header li.tab-guide a
+{
+	padding-left: 23px;
+	background: #FFFFFF url(/theme/icon-guide.gif) no-repeat scroll 4px 4px;
+}
+#overall-header li.tab-addons a
+{
+	padding-left: 23px;
+	background: #FFFFFF url(/theme/icon-addons.gif) no-repeat scroll 4px 4px;
+}
+#overall-header li.tab-dev a
+{
+	padding-left: 23px;
+	background: #FFFFFF url(/theme/icon-dev.gif) no-repeat scroll 4px 4px;
+}
+
+#overall-header li a:hover
+{
+	padding-top: 3px;
+	padding-bottom: 3px;
+	top: -1px;
+	opacity: 0.95;
+	filter: alpha(opacity=95);
+}
+
+#overall-header li.cur
+{
+	background: #FFFFFF;
+	padding-bottom: 6px;
+}
+#overall-header div.overall-header-shadow
+{
+	border-top: 1px solid #BBBBBB;background:#DDDDDD;height:1px; overflow:hidden;
+	padding:0;margin:0;
+}
+
+#overall-header li.cur a,
+#overall-header li.cur a:hover
+{
+	padding-top: 3px;
+	padding-bottom: 5px;
+	opacity: 1.0;
+	filter: alpha(opacity=100);
+	top: -2px;
+	color: #0a0a0a;
+	/* background: #ffffff url(/theme/home-bg.png) no-repeat fixed center top; */
+}
+
+#subnav
+{
+	display: block;
+	font-size: 1px;
+	border-bottom: 1px solid #556699;
+	background: #FFFFFF none;
+	padding: 13px 0 1px 0;
+	text-align: center;
+}
+
+#subnav ul,
+#subnav li
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+#subnav ul
+{
+	display: block;
+}
+#subnav li
+{
+	display: inline;
+}
+
+#subnav ul.large a
+{
+	font-size: 24pt;
+	padding: 4px 7px 1px 7px;
+}
+#subnav ul.large a:hover
+{
+	padding: 4px 7px 2px 7px;
+}
+#subnav ul.large a.c,
+#subnav ul.large a.c:hover
+{
+	padding: 7px 9px 3px 9px;
+}
+
+#subnav a
+{
+	font-size: 12pt;
+	text-decoration: none;
+	color: #556699;
+	padding: 1px 4px 1px 4px;
+	margin: 0 3px;
+	border: 1px solid #BBC4EE;
+	border-bottom: 0;
+	background: #F0F5FF none;
+	position: relative;
+	top: 0;
+}
+
+#subnav a:hover
+{
+	border-color: #8899DD;
+	padding: 1px 4px 2px 4px;
+	background: #DFE4FF none;
+	position: relative;
+	top: -1px;
+}
+
+#subnav a.c
+{
+	border: 1px solid #556699;
+	border-bottom: 0;
+	padding: 1px 4px 3px 4px;
+	background: #FFFFFF none;
+	top: -1px;
+}
+#subnav a.c:hover
+{
+	border-color: #556699;
+	padding: 1px 4px 3px 4px;
+	background: #F6FAFF none;
+	top: -1px;
+}
+
+.warzone-alert
+{
+	margin: 10px 0;
+}
+.warzone-alert a
+{
+	display: block;
+	padding: 4px 0;
+	border-top: 1px solid #E0D0AC;
+	border-bottom: 1px solid #E0D0AC;
+	background: #FAE5C0 none;
+	color: #624B44;
+	text-decoration: none;
+	text-align: center;
+	font-size: 11pt;
+}
+.warzone-alert a:hover
+{
+	background-color: #F5D5B0;
+	color: #624218;
+	border-color: #C2BB84;
+}
+
+/** body **/
+
+#lbMain a
+{
+	border: 0;
+}
+
+.warzone-content
+{
+	margin: 0 auto;
+	padding: 0 15px 100px 15px;
+	max-width: 1000px;
+	text-align: left;
+}
+.warzone-content-nofooter
+{
+	padding-bottom: 15px;
+}
+
+.warzone-footer
+{
+	position: absolute;
+	left: 0; right: 0; bottom: 0;
+	width: 100%;
+	padding: 10px 0;
+	border-top: 1px solid #555555;
+	background: #253A4C none;
+	text-align: center;
+	font-size: 10pt;
+}
+.warzone-footer ul
+{
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+.warzone-footer li
+{
+	display: inline;
+	margin: 0;
+	padding: 0 1px;
+	list-style: none;
+}
+.warzone-footer a
+{
+	color: #cccccc;
+	background: transparent;
+	border: 0;
+	padding: 2px 4px;
+	text-decoration: none;
+}
+.warzone-footer a:hover
+{
+	color: #ffffff;
+	background: #30455C;
+	border: 0;
+}
+
+/** home **/
+
+#introbox
+{
+	border:1px solid #BCD4E3;
+	background: #E5EEF5 none;
+	color: #000000;
+	padding: 15px;
+	margin: 1em 0 1em 0;
+}
+#introbox p
+{
+	color: #000101;
+	background: #E5EEF5 none;
+}
+#introbox .screenshot
+{
+	float: right;
+	padding-left: 15px;
+}
+#introbox .screenshot a
+{
+	border: 0;
+}
+#introbox .screenshot img
+{
+	border: 1px solid #999999;
+	padding: 2px;
+	background-color: #ffffff;
+	opacity: 1.0;
+}
+#introbox .screenshot a:hover img
+{
+	border-color: #446677;
+	opacity: 0.9;
+}
+#intronav
+{
+	margin: 0 0 15px 0;
+	padding: 5px 0;
+}
+#intronav ul
+{
+	display: block;
+	margin: 0;
+	padding: 2px 0;
+	border-top: 1px solid #BCD4E3;
+	border-bottom: 1px solid #BCD4E3;
+	background: #F3F7FA none;
+	text-align: center;
+}
+#intronav li
+{
+	display: inline;
+	margin: 0;
+	padding: 0 2px;
+	list-style: none;
+}
+#intronav li a
+{
+	display: inline;
+
+	color: #444B62;
+	border: 1px solid #BBC4EE;
+	background: #EAEFFF none;
+	padding: 3px 6px;
+
+	text-decoration: none;
+	font-weight: bold;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+
+#intronav li a:hover
+{
+	padding-top: 3px;
+	padding-bottom: 3px;
+	opacity: 0.9;
+	filter: alpha(opacity=9);
+	color: #444B62;
+	border-color: #8899DD;
+	background: #DFE4FF none;
+}
+
+.warzone-content .content-box
+{
+	border:1px solid #BCD4E3;
+	background: #F3F7FA none;
+	padding: 10px 10px 2px 10px;
+	margin: 0 0 1em 0;
+}
+.warzone-content .content-box-margin
+{
+	border:1px solid #BCD4E3;
+	background: #F3F7FA none;
+	padding: 10px 10px 2px 10px;
+	margin: 1em 0;
+}
+.warzone-content .content-box h2,
+.warzone-content .content-box-margin h2
+{
+	margin-top: 0;
+	margin-bottom: 2px;
+}
+
+#introbox .tagline
+{
+	color: #707070;
+	font-size: 11pt;
+	min-width: 150px;
+	text-shadow: #CCCCCC 1px 1px 0;
+}
+#introbox .tagline em
+{
+	text-transform: uppercase;
+}
+#introbox .tagline strong
+{
+	display: block;
+	font-size: 16pt;
+	font-variant: small-caps;
+	padding-bottom: 2px;
+	color: #404040;
+}
+
+.warzone-content .downloadbtn
+{
+	padding: 0 10px;
+	color: #333B66;
+}
+.warzone-content .downloadbtn small
+{
+	font-size: 8pt;
+}
+.warzone-content .downloadbtn a
+{
+	float: left;
+	display: block;
+	color: #3B6633;
+	width: 200px;
+	padding: 3px 5px 3px 24px;
+	margin-bottom: 6px;
+	border: 1px solid #669955;
+	background: #A8D4B2 url(/theme/icon-download.gif) no-repeat scroll 3px 8px;
+	font-size: 10pt;
+}
+.warzone-content .downloadbtn a:hover
+{
+	border-color: #447733;
+	background-color: #98C4A2;
+}
+.warzone-content .downloadbtn a em
+{
+	display: block;
+	font-size: 12pt;
+	color: #0A2100;
+}
+.warzone-content .downloadbtn a small
+{
+	display: block;
+	font-size: 8pt;
+	color: #607755;
+}
+.warzone-content .downloadbtn a sub
+{
+	vertical-align: text-bottom;
+	float: right;
+	color: #607755;
+	font-size: 9pt;
+}
+.warzone-content .downloadbtn a.betaversion
+{
+	color: #7B839C;
+	border: 1px solid #B2B6C9;
+	background: #E2EAF3 url(/theme/icon-download.gif) no-repeat scroll 3px 8px;
+}
+.warzone-content .downloadbtn a.betaversion em
+{
+	color: #707A91;
+}
+.warzone-content .downloadbtn a.betaversion small,
+.warzone-content .downloadbtn a.betaversion sub
+{
+	color: #8590A7;
+}
+.warzone-content .downloadbtn a.betaversion:hover
+{
+	color: #5B637C;
+	border-color: #637497;
+	background-color: #D2D8F3;
+}
+.warzone-content .downloadbtn:after
+{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: left;
+	visibility: hidden;
+}
+
+.warzone-content .byline
+{
+	padding-left: 1em;
+	margin-top: 2px;
+	color: #777777;
+	font-size: 9pt;
+}
+.warzone-content .byline a
+{
+	color: #777777;
+	font-size: 9pt;
+	border-bottom-color: #CCCCCC;
+}
+.warzone-content .byline a:hover
+{
+	color: #333333;
+	border-bottom-color: #333333;
+}
+.warzone-content .byline small
+{
+	padding-left: 0.5em;
+}
+.warzone-content .byline small,
+.warzone-content .byline small a,
+.warzone-content .byline small a:hover
+{
+	font-size: 7pt;
+}
+
+/** forms **/
+
+.key, kbd
+{
+	font-family: Consolas, monospace;
+	font-size: 10pt;
+	padding: 0 2px;
+	margin: 0 1px;
+	border-top: 1px solid #EAEAEA;
+	border-bottom: 1px solid #909090;
+	border-left: 3px solid #E0E0E0;
+	border-right: 3px solid #B6B6B6;
+	background: #D4D4D4 none;
+}
+.box
+{
+	border: 1px solid #AAAAAA;
+	color: #555555;
+	padding: 1px 2px;
+}
+.formrow
+{
+	display: block;
+	padding-left: 8em;
+}
+.formrow label
+{
+	display: block;
+	float: left;
+	margin-left: -8em;
+	width: 7.9em;
+	text-align: right;
+	padding: 3px 0 0 0;
+}
+.formrow label.radio
+{
+	display: inline;
+	float: none;
+	margin-left: 0;
+	width: auto;
+	padding: 0;
+}
+.textbox,
+.warzone-content .inputbox
+{
+	font-family: Helvetica, Arial, Tahoma, Verdana, sans-serif;
+	font-size: 11pt;
+	padding: 2px;
+	border: 1px solid #8899DD;
+}
+.textbox:hover,
+.warzone-content .inputbox:hover
+{
+	padding: 2px;
+	border: 1px solid #556699;
+}
+.textbox:focus, .textbox:active,
+.warzone-content .inputbox:focus, .warzone-content .inputbox:active
+{
+	padding: 1px;
+	border: 2px solid #556699;
+}
+.warzone-content .backforward
+{
+	text-align: center;
+	color: #888888;
+}
+.warzone-content .backforward a
+{
+	padding: 1px 4px 1px 4px;
+	color: #444B62;
+	border: 1px solid #BBC4EE;
+	background: #EAEFFF none;
+	text-decoration: none;
+	white-space: nowrap;
+}
+.warzone-content .backforward a:hover
+{
+	color: #444B62;
+	border-color: #8899DD;
+	background: #DFE4FF none;
+	text-decoration: none;
+}
+
+
+
+.warzone-content table
+{	border-bottom: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC; vertical-align: middle; font-size:10pt; }
+.warzone-content td,
+.warzone-content th
+{	border-top: 1px solid #CCCCCC; border-left: 1px solid #CCCCCC; padding: 3px 5px; }
+.warzone-content th
+{	background: #E3E6F1; }
+.warzone-content table.wiki
+{
+	margin-left: 2em;
+	margin-bottom: 1em;
+}
+.warzone-content pre.wiki
+{
+	margin-left: 2em;
+}

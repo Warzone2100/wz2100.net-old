@@ -1,0 +1,84 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+#RewriteLog "/home/wz/public_html/cache/rewrite.log"
+#RewriteLogLevel 5
+
+RewriteCond %{HTTP_HOST} ^www\.guide\.wz2100\.net$ [NC]
+RewriteRule ^(.*)$ http://guide.wz2100.net/$1 [R=301,L]
+
+ErrorDocument 404 /404
+
+DirectoryIndex index.html index.php /fileman/dirindex.php
+
+# Root
+
+RewriteRule ^addons/?$ http://addons.wz2100.net/ [R=301,L]
+RewriteRule ^index(\.php|\.html)?$ http://guide.wz2100.net/ [R=301,L]
+RewriteRule ^(w|r|c)/([a-z0-9-]+)/$ http://guide.wz2100.net/$1/$2 [R=301,L]
+RewriteRule ^r/tech\-tree\-chart/?$ http://guide.wz2100.net/r/tech-tree [R=301,L]
+
+RewriteRule ^([a-z0-9]+)$ $1.php [L,QSA]
+RewriteRule ^w/([a-z0-9]+)$ w/w.php?$1 [L,QSA]
+RewriteRule ^r/([a-z0-9]+)$ r/r.php?$1 [L,QSA]
+RewriteRule ^c/([a-z0-9]+)$ c/c.php?$1 [L,QSA]
+RewriteRule ^c/([a-z0-9]+)\-([a-z0-9]+)\-([a-z0-9]+)$ c/t.php?w=$1&b=$2&p=$3&cyborg [L,QSA]
+RewriteRule ^u/([a-z0-9]+)\-([a-z0-9]+)\-([a-z0-9]+)$ c/t.php?w=$1&b=$2&p=$3 [L,QSA]
+RewriteRule ^b/([a-z0-9]+)$ b/b.php?$1 [L,QSA]
+RewriteRule ^d/([a-z0-9]+)$ d/d.php?$1 [L,QSA]
+RewriteRule ^bp/([a-z0-9]+)$ bp/bp.php?$1 [L,QSA]
+RewriteRule ^r/tech\-tree$ r/graphicaltechtree.html [L,QSA]
+RewriteRule ^r/tech\-tree-linear$ r/techtree.html [L,QSA]
+
+# new/
+
+RewriteRule ^new/index(\.php|\.html)?$ http://guide.wz2100.net/rebalance [R=301,L]
+RewriteRule ^new/$ http://guide.wz2100.net/rebalance [R=301,L]
+RewriteRule ^new/w/([a-z0-9]+)$ new/w/w.php?$1 [L,QSA]
+RewriteRule ^new/r/([a-z0-9]+)$ new/r/r.php?$1 [L,QSA]
+RewriteRule ^new/c/([a-z0-9]+)$ new/c/c.php?$1 [L,QSA]
+RewriteRule ^new/c/([a-z0-9]+)\-([a-z0-9]+)\-([a-z0-9]+)$ new/c/t.php?w=$1&b=$2&p=$3&cyborg [L,QSA]
+RewriteRule ^new/u/([a-z0-9]+)\-([a-z0-9]+)\-([a-z0-9]+)$ new/c/t.php?w=$1&b=$2&p=$3 [L,QSA]
+RewriteRule ^new/b/([a-z0-9]+)$ new/b/b.php?$1 [L,QSA]
+RewriteRule ^new/d/([a-z0-9]+)$ new/d/d.php?$1 [L,QSA]
+RewriteRule ^new/bp/([a-z0-9]+)$ new/bp/bp.php?$1 [L,QSA]
+RewriteRule ^new/r/tech\-tree$ new/r/graphicaltechtree.html [L,QSA]
+RewriteRule ^new/r/tech\-tree-linear$ new/r/techtree.html [L,QSA]
+
+# 1.10
+
+RewriteRule ^1\.10/index(\.php|\.html)?$ http://guide.wz2100.net/1.10/ [R=301,L]
+RewriteRule ^1\.10/([a-z0-9-]{4,})/$ http://guide.wz2100.net/1.10/$1 [R=301,L]
+RewriteRule ^1\.10/(w|r|c)/([a-z0-9]+)/$ http://guide.wz2100.net/1.10/$1/$2 [R=301,L]
+
+RewriteRule ^1\.10/([a-z0-9]+)$ 1.10/$1.php [L,QSA]
+RewriteRule ^1\.10/w/([a-z0-9]+)$ 1.10/w/w.php?$1 [L,QSA]
+RewriteRule ^1\.10/r/([a-z0-9]+)$ 1.10/r/r.php?$1 [L,QSA]
+RewriteRule ^1\.10/c/([a-z0-9]+)$ 1.10/c/c.php?$1 [L,QSA]
+RewriteRule ^1\.10/r/tech\-tree$ 1.10/r/techtree.html [L,QSA]
+
+# 2.2
+
+RewriteRule ^2\.2/index(\.php|\.html)?$ http://guide.wz2100.net/2.2/ [R=301,L]
+RewriteRule ^2\.2/([a-z0-9-]{4,})/$ http://guide.wz2100.net/2.2/$1 [R=301,L]
+RewriteRule ^2\.2/(w|r|c)/([a-z0-9]+)/$ http://guide.wz2100.net/2.2/$1/$2 [R=301,L]
+
+RewriteRule ^2\.2/([a-z0-9]+)$ 2.2/$1.php [L,QSA]
+RewriteRule ^2\.2/w/([a-z0-9]+)$ 2.2/w/w.php?$1 [L,QSA]
+RewriteRule ^2\.2/r/([a-z0-9]+)$ 2.2/r/r.php?$1 [L,QSA]
+RewriteRule ^2\.2/c/([a-z0-9]+)$ 2.2/c/c.php?$1 [L,QSA]
+RewriteRule ^2\.2/r/tech\-tree$ 2.2/r/techtree.html [L,QSA]
+
+# ntw 
+
+RewriteRule ^ntw/index(\.php|\.html)?$ http://guide.wz2100.net/ntw/ [R=301,L]
+RewriteRule ^ntw/([a-z0-9]{4,})/$ http://guide.wz2100.net/ntw/$1 [R=301,L]
+RewriteRule ^ntw/(w|r|c)/([a-z0-9-]+)/$ http://guide.wz2100.net/ntw/$1/$2 [R=301,L]
+
+RewriteRule ^ntw/([a-z0-9]+)$ ntw/$1.php [L,QSA]
+RewriteRule ^ntw/w/([a-z0-9]+)$ ntw/w/w.php?$1 [L,QSA]
+RewriteRule ^ntw/r/([a-z0-9]+)$ ntw/r/r.php?$1 [L,QSA]
+RewriteRule ^ntw/c/([a-z0-9]+)$ ntw/c/c.php?$1 [L,QSA]
+RewriteRule ^ntw/r/tech\-tree$ ntw/r/techtree.html [L,QSA]
+
+</IfModule>

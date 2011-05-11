@@ -1,0 +1,56 @@
+#logo,
+#cse-search-form,
+#nav,
+#leftnav,
+#addcomment,
+#commentary,
+.backforward,
+.expcolall,
+.editbtn,
+#overall-header,
+.warzone-footer
+{
+	display: none !important;
+}
+
+body, html
+{
+	background: transparent !important;
+}
+
+#content
+{
+	margin: 0 !important;
+	border: 0 !important;
+	background: transparent none !important;
+}
+
+#header
+{
+	padding: 0 0 5px 0;
+	margin: 10px 10px 5px 10px !important;
+	border: 0 !important;
+	border-bottom: 2px solid #556699;
+}
+
+h3
+{
+	padding: 0 0 5px 0;
+	margin: 2em 0 5px 0;
+	border: 0;
+	border-bottom: 2px solid #556699;
+}
+
+h4
+{
+	padding: 0 0 5px 0;
+	margin: 1em 0 5px 0;
+	border: 0;
+	border-bottom: 1px solid #556699;
+}
+
+a,
+#content a
+{
+	text-decoration: none;
+}

@@ -1,0 +1,36 @@
+/**
+ * Navigation-line
+ */
+div#g_navigation ul {
+    font-size:125%;
+}
+
+/**
+ * Siteline
+ */
+div#g_siteline {
+    margin:0px;
+}
+
+div#g_siteline img {
+    vertical-align:-4px;
+}
+
+/**
+ * Content
+ */
+div#g_cont {
+    max-width:960px;
+    margin:0px auto;
+}
+
+/**
+ * Footer
+ */
+div#g_foot {
+    margin:10px auto 5px auto;
+}
+
+div#g_foot ul {
+    font-size:125%;
+}

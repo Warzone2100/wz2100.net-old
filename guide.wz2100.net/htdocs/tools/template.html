@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="en" />
+
+    <title>{TITLE} - Warzone 2100 Guide</title> 
+
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <link rel="shortcut icon" href="http://static.wz2100.net/favicon.ico" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Warzone 2100 News" href="http://forums.wz2100.net/feed.php?mode=news" />
+
+    <link rel="stylesheet" type="text/css" href="http://static.wz2100.net/theme/warzone.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{ROOT}theme/guide.css" />
+    <link rel="stylesheet" type="text/css" media="print" href="{ROOT}theme/guide-print.css" />
+<script type="text/javascript">
+<!--
+var mobile = false;
+if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)))
+{
+mobile = true;
+}
+if (mobile) document.write('<link rel="stylesheet" type="text/css" media="all" href="{ROOT}style-mobile.css" />');
+-->
+</script>
+<!--[if IE 6]>
+<script>
+mobile = true;
+</script>
+<![endif]-->
+    <style type="text/css"> 
+      /* Some wiki pages contain a lot of external links, lets not decorate those with icons. */
+      @media screen {
+       a.ext-link .icon {
+        background: none;
+        padding-left: 0px;
+       }
+      }
+    </style>
+<script type="text/javascript" language="javascript" src="http://static.wz2100.net/theme/lytebox.js"></script>
+<script type="text/javascript" language="javascript" src="http://static.wz2100.net/theme/jquery-1.4.1.min.js"></script>
+<link rel="stylesheet" href="http://static.wz2100.net/theme/lytebox.css" type="text/css" media="screen" />
+
+<!--
+
+lytebox usage: anchor.onclick = function () { myLytebox.start(this, false, false); return false; }
+
+-->
+
+<script>
+<!--
+
+var isadmin = <?php echo $isadmin?'true':'false'; ?>;
+
+-->
+</script>
+    <!-- On the downside, I've wasted five hours before finding something that works in IE.
+         On the upside, I've discovered three IE bugs. -->
+    <!--[if lte IE 6]>
+    <style> .tree li { height: 1px; } #overall-logo { display:none; } #overall-header div a span { display: block; width:217px;height:100px; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static.wz2100.net/theme/warzone2100.png', sizingMethod='crop'); } .warzone-footer { position: static; } #overall-header li a { background-image: none !important; padding-left: 5px !important; } #msg { width: 40em !important; }
+     </style>
+    <![endif]-->
+    <!--[if IE 7]>
+    <style> .tree li { zoom: 1; } #introbox p { min-height: 0; } </style>
+    <![endif]-->
+  </head>
+  <body onload="begin()"><div id="wrapper">
+<div class="overall-header-guide"><div id="overall-header">
+  <div><a href="http://wz2100.net"><span><img src="http://static.wz2100.net/theme/warzone2100.png" id="overall-logo" width="217" height="100" alt="Warzone 2100" /></span></a></div>
+<script>
+<!--
+document.getElementById('overall-logo').style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static.wz2100.net/theme/warzone2100.png', sizingMethod='scale')";
+-->
+</script>
+  <ul>
+    <!-- these are all on one line because of an IE6/IE7 bug. Don't touch. -->
+    <li class="tab-home"><a href="http://wz2100.net/" title="About Warzone 2100"><span>Home</span></a></li><li class="tab-download"><a href="http://wz2100.net/download" title="Free download"><span>Download</span></a></li><li class="tab-addons"><a href="http://addons.wz2100.net/" title="Maps and mods"><span>Addons</span></a></li><li class="tab-faq"><a href="http://wz2100.net/faq" title="Frequently Asked Questions"><span>FAQ</span></a></li><li class="tab-guide cur"><a href="http://guide.wz2100.net/" title="User manual"><span>Guide</span></a></li><li class="tab-forum"><a href="http://forums.wz2100.net/" title="Community forums"><span>Forum</span></a></li><li class="tab-dev"><a href="http://developer.wz2100.net/" title="Development resources"><span>Development</span></a></li></ul>
+<div class="overall-header-shadow"></div>
+</div></div>
+     <div id="nav">
+
+<div id="cse-search-form"></div>
+<div id="csewrapper"><div id="csetop"></div><div id="cse"></div></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+  function drawcsewrapper()
+  {
+    document.getElementById('csetop').innerHTML = '<p class="editbtn"><a href="#" onclick="document.getElementById(\'csewrapper\').style.display=\'none\'">Close</a></p>';
+    document.getElementById('csewrapper').style.display = 'block';
+  }
+  function focussearch(e)
+  {
+	var that;
+	if (!e) var e = window.event;
+	if (e.target) that = e.target;
+	else if (e.srcElement) that = e.srcElement;
+
+    that.style.backgroundImage = 'none !important';
+  }
+  function blursearch(e)
+  {
+	var that;
+	if (!e) var e = window.event;
+	if (e.target) that = e.target;
+	else if (e.srcElement) that = e.srcElement;
+
+    that.style.backgroundImage = 'none !important';
+    if (that.value == '')
+    {
+      that.style.backgroundImage = "url(http://www.google.com/coop/intl/en/images/google_custom_search_watermark.gif) !important";
+    }
+  }
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function(){
+    var customSearchControl = new google.search.CustomSearchControl('009930428467004058750:n3e7nuel_i4');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setSearchFormRoot('cse-search-form');
+    customSearchControl.draw('cse', options);
+    //document.getElementsByName('search')[0].onfocus = focussearch;
+    //document.getElementsByName('search')[0].onblur = blursearch;
+  }, true);
+//-->
+</script>
+
+       <a href="{ROOT}"{NAV}>Guide</a> <a href="{ROOT}b/"{NAVb}>Base Structures</a> <a href="{ROOT}d/"{NAVd}>Defenses</a> <a href="{ROOT}w/"{NAVw}>Turrets</a> <a href="{ROOT}c/"{NAVc}>Cyborgs</a> <a href="{ROOT}bp/"{NAVbp}>Bodies/Propulsion</a> <a href="{ROOT}r/"{NAVr}>Research</a>
+     </div>
+    <script type="text/javascript">
+    <!--
+      var timer = null;
+      var wideWindow = 0;
+      if (document.body.offsetWidth > 1300 && !mobile)
+      {
+        wideWindow = 2;
+        document.write('<div id="mainwrapper" class="widewindow2">');
+      }
+      else if (document.body.offsetWidth > 800 && !mobile)
+      {
+        wideWindow = 1;
+        document.write('<div id="mainwrapper" class="widewindow">');
+      }
+      else
+      {
+        wideWindow = 0;
+        document.write('<div id="mainwrapper" class="narrowwindow">');
+      }
+    -->
+    </script>
+    <div id="leftnavwrapper"><div id="leftnav" onclick="clearTimeout(timer); timer = setTimeout('chk()',10);"><ul>
+      {LEFTNAV}
+    </ul></div></div>
+    <script language="javascript" type="text/javascript">
+    <!--
+      var th = document.getElementById('overall-header').offsetHeight + document.getElementById('nav').offsetHeight;
+      var lnf = false;
+      var spos = new Array(), sname = new Array(), cloc = '', ci;
+      function chk()
+      {
+        if (!wideWindow) return;
+        var pos = (document.body.scrollTop || document.documentElement.scrollTop);
+        if ((pos >= th) != lnf)
+        {
+          th = document.getElementById('overall-header').offsetHeight + document.getElementById('nav').offsetHeight;
+          if ((pos >= th) != lnf)
+          {
+            if (lnf = !lnf) document.getElementById('leftnav').style.position = 'fixed';
+            else document.getElementById('leftnav').style.position = 'static';
+          }
+        }
+        var loc = '';
+        for (var i=0; i<=spos.length; i++)
+        {
+          if (i == spos.length || pos < spos[i] - 30)
+          {
+            if (i!=0) loc = sname[i-1];
+            break;
+          }
+        }
+        //alert(i+' '+loc);
+        if (loc != cloc)
+        {
+          var links=document.getElementById('leftnav').getElementsByTagName('a');
+          if (cloc != '') links[ci].className = 'nc';
+          ci = i-1;
+          if ((cloc=loc) != '') links[ci].className = 'c';
+        }
+      }
+      function resizechk()
+      {
+        if (mobile) return;
+        th = document.getElementById('overall-header').offsetHeight + document.getElementById('nav').offsetHeight;
+        if (document.body.offsetWidth > 1300 && wideWindow != 2)
+        {
+          wideWindow = 2;
+          document.getElementById('mainwrapper').className = 'widewindow2';
+          chk();
+        }
+        else if (document.body.offsetWidth > 800 && document.body.offsetWidth <= 1300 && wideWindow != 1)
+        {
+          wideWindow = 1;
+          document.getElementById('mainwrapper').className = 'widewindow';
+          chk();
+        }
+        else if (document.body.offsetWidth <= 800 && wideWindow)
+        {
+          wideWindow = 0;
+          document.getElementById('mainwrapper').className = 'narrowwindow';
+          document.getElementById('leftnav').style.position = 'static';
+        }
+      }
+      window.onscroll = chk;
+      window.onresize = resizechk;
+      chk();
+      function begin()
+      {
+        var links=document.getElementById('leftnav').getElementsByTagName('a');
+        var name;
+        spos = new Array(); sname = new Array();
+        for (var i=0; i<links.length; i++)
+        {
+          name = links[i].href.substr(links[i].href.indexOf('#')+1);
+          //document.getElementsByName(name)[0].id = name;
+          spos[spos.length] = ypos(document.getElementById(name));
+          sname[sname.length] = name;
+          links[i].onclick = function() {clearTimeout(timer); timer = setTimeout('chk();scrollBy(0,-10)',10);};
+        }
+        if (document.getElementById('comments'))
+        {
+          spos[spos.length] = ypos(document.getElementById('comments'));
+          sname[sname.length] = '';
+        }
+        resizechk();
+        chk();
+      }
+      function ypos(obj)
+      {
+        var y = 0;
+        if (obj.offsetParent) do
+        {
+          y += obj.offsetTop;
+        } while (obj = obj.offsetParent);
+        return y;
+      }
+      function isadmin() // Do not use for verification - this function would be better named isadminorsomeonepretendingtobeadmin()
+      {
+        var cookies = document.cookie.split(';'), c;
+        for (var i=0; i < cookies.length; i++)
+        {
+          c = cookies[i];
+          while (c.charAt(0)==' ') c = c.substr(1);
+          if (c.substr(0,5) == 'name=') return (c.length > 5 && c.substr(c.length-3) != 'mg');
+        }
+        return false;
+      }
+
+    -->
+		</script>
+    <div class="warzone-content warzone-content-nofooter">
+    <h2 id="header">{TITLEBAR}</h2>
+    <div id="content">
+      {CONTENT}
+    </div>
+    <script language="javascript" type="text/javascript">
+    <!--
+      document.write('</div>');
+      begin();
+      function toggle(id, that)
+      {
+        if (document.getElementById('prereq'+id).style.display=='none')
+        {
+          document.getElementById('prereq'+id).style.display = 'block';
+          that.className = 'expcol col';
+        }
+        else
+        {
+          document.getElementById('prereq'+id).style.display = 'none';
+          that.className = 'expcol exp';
+        }
+        that.blur();
+        //that.style.marginLeft = '-22px'; // Workaround for IE7 bug
+        return false;
+      }
+      function collapseall(that)
+      {
+        var links = that.getElementsByTagName('a');
+        for (var i=0; i<links.length; i++)
+        {
+          if (links[i].className == 'expcol col')
+						toggle(links[i].id.substr(3),links[i]);
+				}
+				return false;
+			}
+      function expandall(that)
+      {
+        var links = that.getElementsByTagName('a');
+        for (var i=0; i<links.length; i++)
+        {
+          if (links[i].className == 'expcol exp')
+          toggle(links[i].id.substr(3),links[i]);
+        }
+        return false;
+      }
+      function expandto(id)
+      {
+        var par = document.getElementById('li'+id).parentNode;
+        if (par.id.substr(0,6) == 'prereq') par = par.parentNode;
+        if (par.id.substr(0,2) == 'li')
+        {
+          id = par.id.substr(2);
+		  if (document.getElementById('btn'+id) && document.getElementById('btn'+id).className == 'expcol exp') toggle(id,document.getElementById('btn'+id));
+          return expandto(id);
+        }
+        return true;
+      }
+      var highlighted = '';
+      function highlight(id)
+      {
+        if (highlighted) document.getElementById('item'+highlighted).className = 'n';
+        highlighted = id;
+        document.getElementById('item'+id).className = 'highlighted';
+      }
+//-->
+</script>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.page4me.ch/" : "http://stats.page4me.ch/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 2);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://stats.page4me.ch/piwik.php?idsite=2" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Tag -->
+
+    <div style="clear: both;"></div> 
+    <div id="g_foot" class="warzone-footer"> 
+      <ul> 
+        <li>
+          <a href="http://wz2100.net/contact">Contact</a>
+        </li><li>
+          <a href="http://wz2100.net/feed.atom">RSS</a>
+        </li><li>
+          <a href="http://wz2100.net/site-policy">Terms of Service</a>
+        </li><li>
+          <a href="http://wz2100.net/privacy-policy">Privacy</a>
+        </li><li>
+          <a href="http://wz2100.net/imprint">Imprint</a>
+        </li><li>
+          <a href="http://wz2100.net/credits">Credits</a>
+        </li><li>
+          <a href="http://wz2100.net/license">License</a>
+        </li>
+      </ul> 
+    </div> 
+  </div></body> 
+</html>
