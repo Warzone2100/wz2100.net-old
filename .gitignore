@@ -2,6 +2,8 @@
 *.orig
 
 # repo clutter
+buildbot.wz2100.net/
+forums.wz2100.net/
 *.inc.php
 
 # Mac clutter
