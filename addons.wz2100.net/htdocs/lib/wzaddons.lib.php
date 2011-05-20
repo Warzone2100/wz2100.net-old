@@ -1,5 +1,5 @@
 <?php
-
+include_once('../../wz2100.net/lib/global.lib.php');
 include_once(dirname(__FILE__) . '/../data/addons.inc.php');
 
 $errors = array();
@@ -10,8 +10,8 @@ function getuser()
 }
 function checkuser($otherid)
 {
-	global $loggedinuserid, $isadmin;
-	if ($isadmin) return true;
+	global $loggedinuserid, $isreviewer;
+	if ($isreviewer) return true;
 	if (!$loggedinuserid) return false;
 	$array1 = explode(':',$otherid);
 	$array2 = explode(':',$loggedinuserid);
@@ -140,7 +140,7 @@ function addons_alloc($file)
 			$errors[] = 'Filename doesn\'t exist.';
 			return false;
 		}
-		if ($_ADDONS[$category][$id] || $_ADDONS['unapproved'][$category][$id])
+		if (array_key_exists($id, $_ADDONS[$category]) || array_key_exists($id, $_ADDONS['unapproved'][$category]))
 		{
 			$errors[] = 'We already have a '.$category.' with the name "'.$id.'"; please rename yours.';
 			return false;
@@ -172,13 +172,13 @@ function addons_alloc($file)
 			'unfinished' => true,
 		);
 		
-		@mkdir("files/unapproved/$category/$id/");
+		mkdir("files/unapproved/$category/$id/");
 		if (!move_uploaded_file($tmp_name, "files/unapproved/$category/$id/$filename"))
 		{
 			$errors[] = 'Error uploading file.';
 			return false;
 		}
-		@chmod("files/unapproved/$category/$id/$filename", 0777);
+		chmod("files/unapproved/$category/$id/$filename", 0777);
 		$_ADDONS['unapproved'][$category][$id] = $newaddon;
 		persist_save('_ADDONS', dirname(__FILE__) . '/../data/addons.inc.php');
 		return $newaddon;

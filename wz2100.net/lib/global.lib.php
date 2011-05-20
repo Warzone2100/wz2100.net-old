@@ -10,8 +10,10 @@ define('PHPBB_ROOT_PATH', dirname(__FILE__) . '/../forums.wz2100.net/htdocs/');
 define('IN_PHPBB', true);
 $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './';
 $phpEx = 'php';
-include($phpbb_root_path.'common.php');
-include($phpbb_root_path.'includes/functions_display.php');
+require_once($phpbb_root_path.'common.php');
+require_once($phpbb_root_path.'includes/functions_display.php');
+require_once($phpbb_root_path.'includes/functions_user.php');
+require_once($phpbb_root_path . 'includes/bbcode.php');
 
 $protocol = 'http://';
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')
@@ -40,19 +42,9 @@ if (get_magic_quotes_gpc()) {
 $user->session_begin();
 $auth->acl($user->data);
 
-$isadmin = false;
-// dev, artist, mod, admin, webmaster, inactive
-if (in_array($user->data['group_id'], $settings['administrators']))
-{
-  $isadmin = true;
-}
+$isadmin = group_memberships($settings['administrators'], $user->data['user_id'], true);
+$isreviewer = ($isadmin ? true : group_memberships($settings['reviewers'], $user->data['user_id'], true));
 
-$isreviewer = false;
-// Contributor, reviewer
-if (in_array($user->data['group_id'], $settings['reviewers']))
-{
-  $isreviewer = true;
-}
 $username = $user->data['username'];
 
 $loggedinuserid = $user->data['user_id'];

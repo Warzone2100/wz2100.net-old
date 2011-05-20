@@ -12,44 +12,14 @@ $p = strval(@$_REQUEST['p']);
     <meta http-equiv="content-language" content="en" /> 
     <link rel="shortcut icon" href="<?php echo $protocol; ?>static.wz2100.net/favicon.ico" type="image/x-icon" /> 
     <link rel="stylesheet" type="text/css" href="<?php echo $protocol; ?>static.wz2100.net/theme/warzone.css" />
+
+    <script src="<?php echo $protocol; ?>static.wz2100.net/theme/jquery-1.4.1.min.js" type="text/javascript"></script>
     <!--[if lt IE 7]>
     <style type="text/css">
         /* nothing... yet */
     </style>
     <![endif]--> 
     <title>Warzone 2100 Add-ons</title> 
-    <link rel="stylesheet" type="text/css" href="<?php echo $protocol; ?>wz2100.net/css/tracwiki-content.css" /><style type="text/css"> 
-      /* Some wiki pages contain a lot of external links, lets not decorate those with icons. */
-      @media screen {
-       a.ext-link .icon {
-        background: none;
-        padding-left: 0px;
-       }
-      }
-    </style> 
-<!--
-They produce 404's - Fast
-<script type="text/javascript" language="javascript" src="<?php echo $protocol; ?>static.wz2100.net/theme/lytebox.js"></script>
-<script type="text/javascript" language="javascript" src="<?php echo $protocol; ?>static.wz2100.net/theme/jquery-1.4.1.min.js"></script>
-<link rel="stylesheet" href="<?php echo $protocol; ?>static.wz2100.net/theme/lytebox.css" type="text/css" media="screen" />
--->
-
-<!--
-
-lytebox usage: anchor.onclick = function () { myLytebox.start(this, false, false); return false; }
-
--->
-
-    <!-- On the downside, I've wasted five hours before finding something that works in IE.
-         On the upside, I've discovered three IE bugs. -->
-    <!--[if lte IE 6]>
-    <style> .tree li { height: 1px; } #overall-logo { display:none; } #overall-header div a span { display: block; width:217px;height:100px; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $protocol; ?>static.wz2100.net/theme/warzone2100.png', sizingMethod='crop'); } .warzone-footer { position: static; } #overall-header li a { background-image: none !important; padding-left: 5px !important; } #msg { width: 40em !important; }
-     </style>
-    <![endif]-->
-    <!--[if IE 7]>
-    <style> .tree li { zoom: 1; } #introbox p { min-height: 0; } </style>
-    <![endif]-->
-
 <script>
 <!--
 

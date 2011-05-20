@@ -105,7 +105,7 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
     $WARZONE['videos']['lq_size'] = $_POST['dlvid_lq_size'];
     $WARZONE['videos']['lq_md5'] = $_POST['dlvid_lq_md5'];
 
-    persist_save('WARZONE') || print('error');
+    persist_save('WARZONE', dirname(__FILE__) . '/lib/warzone.inc.php') || print('error');
     echo '<p>[edit successful]</p>';
   }
   if ($isadmin)

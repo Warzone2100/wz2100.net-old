@@ -2,15 +2,13 @@
 
 /********************************************************
  ** Persistence library                                **
- ** Version 1.2 RC1 - Released 2010 Apr 18             **
+ ** Version 1.3 RC1 - Released 2011 Jan 21             **
  ** By Guangcong Luo <Zarel>                           **
  ** released under public domain / CC0                 **
  ** http://creativecommons.org/licenses/zero/1.0/      **
  ********************************************************
  *
- * Meant for PHP 4.0.4 and up. I've tried to make it work in
- * PHP 3, but I've never tested it, so use it in PHP 3 at
- * your own risk.
+ * Meant for PHP 4.2 and up.
  *
  **[ Description ]***************************************
  *
@@ -32,21 +30,21 @@
  *  include_once 'persist.lib.php';
  *  @include persist_load();
  *
- *  echo 'You are visitor #'.(++$_PERSIST['hitcounter']).'.';
+ *  echo 'You are visitor #'.(++@$_PERSIST['hitcounter']).'.';
  *  persist_save();
  * ?>
  *
  * More sophisticated example:
  * <?php
  *  include_once 'persist.lib.php';
- *  @include persist_load('includes/hitcounter.inc.php');
+ *  @include persist_load('hitcounter');
  *
  *  echo 'You are visitor #'.(++@$hitcounter[__FILE__]).'.';
- *  persist_save('hitcounter', 'includes/hitcounter.inc.php');
+ *  persist_save('hitcounter');
  * ?>
  *
  * If a script does not need to update the value of $_PERSIST, it can
- * simply include persist.inc.php instead of persist.lib.php .
+ * simply include var_name.inc.php instead of persist.lib.php .
  *
  * The first example is useful if you are using one persist variable
  * in one file, while the second is useful if you are using multiple
@@ -103,56 +101,9 @@ function persist_save($name='', $path='')
 	if (!is_writable($path)) return false;
 	$res = @fopen($path,"w");
 	if (!$res) return false;
-	fwrite($res,"<?php\n\$".$name." = ".persist_export($GLOBALS[$name]).";\n?>");
+	fwrite($res,"<?php\n\$".$name." = ".var_export($GLOBALS[$name],true).";\n?>");
 	fclose($res);
 	return true;
-}
-
-// Returns a PHP representation of a variable. Kind of like the opposite of eval().
-// More robust form of var_export()
-// e.g. persist_export("It's a string!") = "'It\'s a string!'"
-//      persist_export(12) = "12";
-function persist_export($var, $pre='')
-{
-	if (is_null($var)) // NULL
-		return 'NULL';
-	if (is_bool($var)) // Boolean
-		return ($var?'TRUE':'FALSE');
-	if (is_int($var) || is_float($var)) // Number
-		return ''.$var;
-	if (is_string($var)) // String
-		return "'".persist_phpescape($var)."'";
-	if (is_array($var)) //Array
-	{
-		if (empty($var)) return 'array()';
-		$buf = "array(\n";
-		$nleft = count($var); $i = -1; reset($var);
-		// Recurse (Whee!)
-		while (($cur = each($var)) !== FALSE)
-		{
-			$buf .= $pre."\t";
-			if (!is_int($cur[0]))
-			{
-				$buf .= "'".persist_phpescape($cur[0])."' => ";
-				$i = FALSE;
-			}
-			else if ($i===FALSE || $cur[0] != ++$i) 
-			{
-				$buf .= $cur[0].' => ';
-				$i = ($i!==FALSE&&$cur[0]>$i?$cur[0]:FALSE);
-			}
-			$buf .= persist_export($cur[1], $pre."\t");
-			if (--$nleft) $buf .= ',';
-			$buf .= "\n";
-		}
-		return $buf.$pre.')';
-	}
-	return "unserialize('".persist_phpescape(serialize($var))."')";
-}
-
-function persist_phpescape($str)
-{
-	return strtr($str,array("\\" => "\\\\", "'" => "\\'"));
 }
 
 ?>

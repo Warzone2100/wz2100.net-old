@@ -1,47 +1,6 @@
 <?php
-
-// Grab just the sorted topic ids
-$newsforumid = 1;
-
-// boo magic quotes
-if (get_magic_quotes_gpc()) {
-    $process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
-    while (list($key, $val) = each($process)) {
-        foreach ($val as $k => $v) {
-            unset($process[$key][$k]);
-            if (is_array($v)) {
-                $process[$key][stripslashes($k)] = $v;
-                $process[] = &$process[$key][stripslashes($k)];
-            } else {
-                $process[$key][stripslashes($k)] = stripslashes($v);
-            }
-        }
-    }
-    unset($process);
-}
-
-include 'lib/persist.lib.php';
-@include persist_load('WARZONE');
-
-// Session management (from phpbb)
-define('PHPBB_ROOT_PATH', '../forums.wz2100.net/htdocs/');
-define('IN_PHPBB', true);
-$phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './';
-$phpEx = 'php';
-include($phpbb_root_path.'common.php');
-include($phpbb_root_path.'includes/functions_display.php');
-include($phpbb_root_path . 'includes/bbcode.php');
-$user->session_begin();
-$auth->acl($user->data);
-
-$isadmin = false;
-// dev, artist, mod, admin
-$adminlist = array(6, 22, 19, 20, 1); //29
-if (in_array($user->data['group_id'], $adminlist))
-{
-	$isadmin = true;
-}
-function isadmin() { return $GLOBALS['isadmin']; }
+include_once('../lib/global.lib.php');
+include_once('lib/warzone.inc.php');
 
 $t = (int)@$_REQUEST['t'];
 if (!$t && substr($_SERVER['REQUEST_URI'],0,6)=='/news/')
@@ -161,7 +120,7 @@ if (@$topic)
 {
 	$row = $topic;
 
-	if ($row['forum_id'] != $newsforumid)
+	if ($row['forum_id'] != $settings['newforum'])
 	{
 ?>
 <style>
@@ -208,7 +167,7 @@ if (@$topic)
 		$update_count = array();
 		if (!empty($attachments[$row['post_id']]))
 		{
-			parse_attachments($newsforumid, $message, $attachments[$row['post_id']], $update_count);
+			parse_attachments($settings['newforum'], $message, $attachments[$row['post_id']], $update_count);
 		}
 		
 		$message = str_replace('"../forums.wz2100.net/htdocs/','"http://forums.wz2100.net/',$message);
@@ -241,7 +200,7 @@ else
 //$sql = 'SELECT t.topic_id, t.topic_title, t.topic_time, t.topic_poster, t.topic_first_poster_name, t.topic_replies
 $sql = 'SELECT t.topic_id, t.topic_title, t.topic_time, t.topic_poster, t.topic_first_poster_name, t.topic_replies, t.*
 	FROM ' . TOPICS_TABLE . " t
-	WHERE t.forum_id = $newsforumid
+	WHERE t.forum_id = " . $settings['newforum'] . "
 		AND t.topic_type IN (" . POST_NORMAL . ")
 		AND t.topic_status IN (0,1)
 	ORDER BY t.topic_id DESC";
