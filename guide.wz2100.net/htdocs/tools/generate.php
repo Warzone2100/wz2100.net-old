@@ -247,7 +247,7 @@ case 4:
 			$row['dps'] = round($row['damage']*$row['nrounds']*10/($row['cooldown']+$row['nrounds']*$row['fcooldown'])*$row['lacc']/100,1);
 		} */
 		$weapons[$wids[$wdata[0]]] = $row;
-		if (!$wsubclasses[simplify($wdata[37])]) $wsubclasses[simplify($wdata[37])] = array('scid' => simplify($wdata[37]), 'name' => $subclasses[simplify($wdata[37])], 'upgrades' => array(), 'maxdam' => 0, 'maxacc' => 0, 'maxrof' => 0);
+		if (!@$wsubclasses[simplify($wdata[37])]) $wsubclasses[simplify($wdata[37])] = array('scid' => simplify($wdata[37]), 'name' => $subclasses[simplify($wdata[37])], 'upgrades' => array(), 'maxdam' => 0, 'maxacc' => 0, 'maxrof' => 0);
 	}
 	$wsubclasses['repair'] = array('scid' => 'repair', 'name' => 'Repair', upgrades => array(), 'maxbuild' => 0);
 	$wsubclasses['construct'] = array('scid' => 'construct', 'name' => 'Construction', upgrades => array(), 'maxbuild' => 0);
@@ -485,7 +485,7 @@ case 6:
 			{
 				$wz_upgrades[$func['type']]['upgrades'][] = $wz_rids[$data[0]];
 				$wz_upgrades[$func['type']]['max']
-					= max($wz_upgrades[$func['type']]['max'], $func['amt']);
+					= max(@$wz_upgrades[$func['type']]['max'], $func['amt']);
 			}
 		}
 	}
@@ -520,6 +520,38 @@ case 7:
 		$wz_research[$wz_rids[$rdata[0]]]['prereqs'][] = $wz_rids[$rdata[1]];
 		$wz_research[$wz_rids[$rdata[1]]]['allows'][] = $wz_rids[$rdata[0]];
 	}
+	/* $wz_researchnew = array();
+	$wz_researchnew['machinegun'] = $wz_research['machinegun'];
+	$wz_researchnew['engineering'] = $wz_research['engineering'];
+	$wz_researchnew['sensorturret'] = $wz_research['sensorturret'];
+	while (1)
+	{
+		$done = true;
+		foreach ($wz_research as $k => $research)
+		{
+			if (!$wz_researchnew[$k])
+			{
+				$allprereqs = true;
+				foreach ($research['prereqs'] as $prereq)
+				{
+					if (!$wz_researchnew[$prereq])
+					{
+						$allprereqs = false;
+						break;
+					}
+				}
+				if ($allprereqs)
+				{
+					$wz_researchnew[$k] = $research;
+					$done = false;
+				}
+			}
+		}
+		if ($done)
+		{
+			break;
+		}
+	} */
 	$fp = fopen('cache/research.inc.php', 'w');
 	fwrite($fp, '<'.'?php $wz_research=') or fclose($fp);
 	fwrite($fp, persist_tophp($wz_research)) or fclose($fp);
@@ -566,7 +598,7 @@ case 8:
 		if (substr($string,0,1)=='"') $string = substr($string,1,-1);
 		if ($depth==2)
 		{
-			if ($wz_rdids[$current]) foreach ($wz_rdids[$current] as $rdid)
+			if (@$wz_rdids[$current]) foreach ($wz_rdids[$current] as $rdid)
 			{
 				$wz_research[$rdid]['desc'][] = $string;
 			}
@@ -739,7 +771,7 @@ case 11:
 			'turrets' => array(),
 			'prereq' => ''
 		);
-		if ($wz_wids[$row['sensor_wzid']])
+		if (@$wz_wids[$row['sensor_wzid']])
 		{
 			$row['turrets'][] = $wz_wids[$row['sensor_wzid']];
 		}
@@ -865,22 +897,22 @@ case 13:
 	foreach ($strings as $string)
 	{
 		$data = explode(',',$string);
-		if ($wz_wids[$data[1]])
+		if (@$wz_wids[$data[1]])
 		{
 			$wz_structures[$wz_sids[$data[0]]]['turrets'][] = $wz_wids[$data[1]];
 			$wz_structures[$wz_sids[$data[0]]]['hp'] += $wz_weapons[$wz_wids[$data[1]]]['hp'];
 		}
-		if ($wz_wids[$data[2]])
+		if (@$wz_wids[$data[2]])
 		{
 			$wz_structures[$wz_sids[$data[0]]]['turrets'][] = $wz_wids[$data[2]];
 			$wz_structures[$wz_sids[$data[0]]]['hp'] += $wz_weapons[$wz_wids[$data[2]]]['hp'];
 		}
-		if ($wz_wids[$data[3]])
+		if (@$wz_wids[$data[3]])
 		{
 			$wz_structures[$wz_sids[$data[0]]]['turrets'][] = $wz_wids[$data[3]];
 			$wz_structures[$wz_sids[$data[0]]]['hp'] += $wz_weapons[$wz_wids[$data[3]]]['hp'];
 		}
-		if ($wz_wids[$data[4]])
+		if (@$wz_wids[$data[4]])
 		{
 			$wz_structures[$wz_sids[$data[0]]]['turrets'][] = $wz_wids[$data[4]];
 			$wz_structures[$wz_sids[$data[0]]]['hp'] += $wz_weapons[$wz_wids[$data[4]]]['hp'];
@@ -959,8 +991,8 @@ case 15:
 			'brain' => simplify($data[3]),
 			'construct' => $wz_wids[$data[4]],
 			'ecm' => simplify($data[5]),
-			'repair' => $wz_wids[$data[8]],
-			'sensor' => $wz_wids[$data[10]],
+			'repair' => @$wz_wids[$data[8]],
+			'sensor' => @$wz_wids[$data[10]],
 			'prereq' => '',
 			'hp' => 0,
 			'armor' => 0,
@@ -980,8 +1012,8 @@ case 15:
 		$row['bp'] = iupg($wz_bodies[$row['body']]['bp'],
 			$wz_propulsions[$row['propulsion']]['bp']);
 		$row['hp'] = iupg($wz_bodies[$row['body']]['hp'],$wz_propulsions[$row['propulsion']]['hp']);
-		$row['price'] = iupg($wz_bodies[$row['bodies']]['price'],
-			$wz_propulsions[$row['propulsion']]['price']);
+		$row['price'] = iupg(@$wz_bodies[$row['bodies']]['price'],
+			@$wz_propulsions[$row['propulsion']]['price']);
 		$row['weight'] = iupg($wz_bodies[$row['body']]['weight'],$wz_propulsions[$row['propulsion']]['weight']);
 		if ($row['construct']&&$row['construct']!='znullconstruct') $row['turrets'][] = $row['construct'];
 		if ($row['repair']&&$row['construct']!='znullrepair') $row['turrets'][] = $row['repair'];
@@ -1058,6 +1090,8 @@ case 16:
 	echo "Making weapon table\r\n";
 	include_once 'cache/research.inc.php';
 	include_once 'cache/structures.inc.php';
+	include_once 'cache/wsubclasses.inc.php';
+	include_once 'cache/functions.inc.php';
 	$wz_weapontable = array();
 	$strings = file('data/mp/stats/weaponmodifier.txt');
 	foreach ($strings as $string)
@@ -1092,17 +1126,17 @@ case 16:
 		$somethingleft = false;
 		foreach ($wz_research as $i => $research)
 		{
-			if ($research['enabled'] == 1)
+			if (@$research['enabled'] == 1)
 			{
 				$somethingleft = true;
 				foreach ($research['allows'] as $curallow)
 				{
-					if (!$wz_research[$curallow]['enabled'])
+					if (!@$wz_research[$curallow]['enabled'])
 					{
 						$canenable = true;
 						foreach ($wz_research[$curallow]['prereqs'] as $prereq)
 						{
-							if (!$wz_research[$prereq]['enabled'])
+							if (substr($prereq,0,2) !== '..' && !@$wz_research[$prereq]['enabled'])
 							{
 								$canenable = false;
 								break;
@@ -1119,6 +1153,47 @@ case 16:
 		}
 		if (!$somethingleft)
 			break;
+	}
+	foreach ($wz_researchorder as $k)
+	{
+		$wz_research[$k]['totalbp'] = 0;
+		foreach ($wz_research[$k]['prereqs'] as $prereq)
+		{
+			if ($wz_research[$k]['totalbp'] < @$wz_research[$prereq]['totalbp'])
+			{
+				$wz_research[$k]['totalbp'] = $wz_research[$prereq]['totalbp'];
+			}
+		}
+		$wz_research[$k]['totalbp'] += $wz_research[$k]['price'];
+	}
+	foreach ($wz_researchorder as $k)
+	{
+		//echo $k.' ';
+		$totaltime = 0;
+		$totalbp = 0;
+		$researchmultiplier = 1;
+		if ($wz_research[$k]['totalbp'] > $wz_research['researchmodule']['totalbp'])
+		{
+			$totaltime = $wz_research['researchmodule']['totalbp'];
+			$totalbp = $wz_research['researchmodule']['totalbp'];
+			$researchmultiplier = 1.857;
+		}
+		foreach ($wz_upgrades['researchupgrade']['upgrades'] as $upgrade)
+		{
+			//echo $upgrade.':'.$wz_research[$upgrade]['totalbp'].' '.$k.':'.$wz_research[$k]['totalbp'];
+			if ($wz_research[$upgrade]['totalbp'] > $wz_research[$k]['totalbp'])
+			{
+				break;
+			}
+			$totaltime += ($wz_research[$upgrade]['totalbp']-$totalbp)/$researchmultiplier;
+			$totalbp = $wz_research[$upgrade]['totalbp'];
+			$researchmultiplier = 1.857 + $wz_functions[$wz_research[$upgrade]['result'][0][1]]['funcs'][0]['amt']/100;
+		}
+		$totaltime += ($wz_research[$k]['totalbp']-$totalbp)/$researchmultiplier;
+		$wz_research[$k]['totaltime'] = $totaltime;
+		//echo '<br />';
+//$out .= '<li>'.($wz_functions[$wz_research[$upgrade]['result'][0][1]]['funcs'][0]['amt']+100).'% - <a href="'.$root.'r/'.$upgrade.'">'.$wz_research[$upgrade]['name']."</a></li>\r\n";
+
 	}
 	$fp = fopen('cache/research.inc.php', 'w');
 	fwrite($fp, '<'.'?php $wz_research=') or fclose($fp);
@@ -1361,7 +1436,7 @@ case 101:
 	$wdata = str_replace('{TITLE}','Turrets',$wdata);
 	$wdata = str_replace('{ROOT}','../',$wdata);
 	$wdata = str_replace('{NAVw}',' class="c"',$wdata);
-	$wdata = str_replace('{LEFTNAV}','<li><a href="#systems">Systems</a><ul><li><a href="#repair">Repair turrets</a></li><li><a href="#sensor">Sensor turrets</a></li><li><a href="#command">Command turrets</a></li></ul></li><li><a href="#weapontable">Weapon Table</a></li><li><a href="#weapons">Weapons</a><ul><li><a href="#machinegun">Machineguns</a></li><li><a href="#cannon">Cannons</a></li><li><a href="#flamer">Flamers</a></li><li><a href="#mortar">Mortars/Howitzers</a></li><li><a href="#rocket">Rockets/Missiles</a></li><li><a href="#gauss">Rail Guns</a></li><li><a href="#laser">Lasers</a></li><li><a href="#electronic">Electronic</a></li><li><a href="#aa">Anti-air</a></li></ul></li><li><a href="#vtolweapons">VTOL Weapons</a><ul><li><a href="#vtolbombs">Bombs</a></li></ul></li><li><a href="#struct">Structure Weapons</a></li>',$wdata);
+	$wdata = str_replace('{LEFTNAV}','<li><a href="#systems">Systems</a><ul><li><a href="#repair">Repair turrets</a></li><li><a href="#sensor">Sensor turrets</a></li><li><a href="#command">Command turrets</a></li></ul></li><li><a href="#weapontable">Weapon Table</a></li><li><a href="#weapons">Weapons</a><ul><li><a href="#machinegun">Machineguns</a></li><li><a href="#cannon">Cannons</a></li><li><a href="#flamer">Flamers</a></li><li><a href="#mortar">Mortars/Howitzers</a></li><li><a href="#rocket">Rockets/Missiles</a></li><li><a href="#gauss">Rail Guns</a></li><li><a href="#laser">Lasers</a></li><li><a href="#electronic">Electronic</a></li><li><a href="#aa">Anti-air</a></li></ul></li><li><a href="#vtolweapons">VTOL Weapons</a><ul><li><a href="#vtolbombs">Bombs</a></li><li><a href="#airtoair">Air-to-air</a></li></ul></li><li><a href="#struct">Structure Weapons</a></li>',$wdata);
 	$wdata = str_replace('{TITLEBAR}','<strong>Turrets</strong>',$wdata);
 	$wdata = str_replace('{CONTENT}',$content,$wdata);
 	$wdata = preg_replace('/\{[A-Za-z0-9]+\}/','',$wdata);
