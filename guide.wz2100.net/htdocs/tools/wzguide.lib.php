@@ -705,7 +705,7 @@ function showdesc($id, $root='')
   $out = '<p>'.iconimg($id,'r').'<span class="price">$'.min(intval($wz_research[$id]['price']/32),450).'</span> <span class="smallgrey indent">'.aval(array_keys($wz_rids,$id),0).'</span></p>';
   $out .= '<p>'.($wz_research[$id]['major']?'<span class="small">[<strong>Major research</strong>]</span>':'<span class="small">[Minor research]</span>').'</p>';
   if ($wz_research[$id]['desc']) $out .= '<blockquote><em>'.implode('<br />',$wz_research[$id]['desc']).'</em></blockquote>';
-  if (isset($wz_research[$id]['totaltime'])) $out .=  '<p><abbr title="Minimum amount of time you should expect a player to take to get this if they rush for it.">Total time</abbr>: roughly '.round($wz_research[$id]['totaltime']/16/60,2).' minutes</p>';
+  if (isset($wz_research[$id]['totaltime'])) $out .=  '<p><em><abbr title="Minimum amount of time you should expect a player to take to get this if they rush for it.">Total time</abbr>:</em> roughly '.round($wz_research[$id]['totaltime']/16/60,2).' minutes</p>';
   if (count($wz_research[$id]['result']))
   {
     $out .= "<ul class=\"b\">\r\n";
