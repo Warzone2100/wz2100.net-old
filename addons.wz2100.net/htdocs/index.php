@@ -12,8 +12,10 @@ $p = strval(@$_REQUEST['p']);
     <meta http-equiv="content-language" content="en" /> 
     <link rel="shortcut icon" href="<?php echo $protocol; ?>static.wz2100.net/favicon.ico" type="image/x-icon" /> 
     <link rel="stylesheet" type="text/css" href="<?php echo $protocol; ?>static.wz2100.net/theme/warzone.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $protocol; ?>static.wz2100.net/theme/lytebox.css" />
 
     <script src="<?php echo $protocol; ?>static.wz2100.net/theme/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="<?php echo $protocol; ?>static.wz2100.net/theme/lytebox.js" type="text/javascript"></script>
     <!--[if lt IE 7]>
     <style type="text/css">
         /* nothing... yet */
