@@ -434,7 +434,7 @@ function &getaddonforediting($fullid)
 	$null = NULL;
 	$curaddon = &getaddon($fullid);
 	if (!checkuser($curaddon['submitterid'])) return $null;
-	if (isadmin() || !$curaddon['approved']) return $curaddon;
+	if (isreviewer() || !$curaddon['approved']) return $curaddon;
 	return addon_duplicatetounapproved($curaddon);
 }
 
@@ -669,9 +669,9 @@ if (@$_POST['act'] == 'editaddon')
 			$curaddon['tileset'] = simplify($_POST['tileset']);
 			if ($curaddon['tileset'] == 'none' || !$curaddon['tileset']) $curaddon['tileset'] = false;
 		}
-		if (@$_POST['status'] && isadmin())
+		if (@$_POST['status'] && isreviewer())
 		{
-			if ($_POST['status']=='spambin')
+			if ($_POST['status']=='spambin' && isadmin())
 			{
 				addon_spambin($curaddon);
 				$errors = array();
@@ -689,4 +689,3 @@ if (@$_POST['act'] == 'editaddon')
 }
 
 
-?>
