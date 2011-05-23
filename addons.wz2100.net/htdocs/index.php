@@ -25,7 +25,7 @@ $p = strval(@$_REQUEST['p']);
 <script>
 <!--
 
-var isadmin = <?php echo $isadmin?'true':'false'; ?>;
+var isadmin = <?php echo $isreviewer?'true':'false'; ?>;
 
 function htmlentities(text)
 {
