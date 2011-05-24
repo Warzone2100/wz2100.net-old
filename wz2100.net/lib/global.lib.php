@@ -43,7 +43,8 @@ $user->session_begin();
 $auth->acl($user->data);
 
 $isadmin = group_memberships($settings['administrators'], $user->data['user_id'], true);
-$isreviewer = ($isadmin ? true : group_memberships($settings['reviewers'], $user->data['user_id'], true));
+$ishelper = ($isadmin || group_memberships($settings['helpers'], $user->data['user_id'], true));
+$isreviewer = ($ishelper || group_memberships($settings['reviewers'], $user->data['user_id'], true));
 
 $username = $user->data['username'];
 
@@ -52,7 +53,8 @@ $user_id = $user->data['user_id'];
 if (!$user->data['is_registered']) $loggedinuserid = 0;
 
 function isadmin() { return $GLOBALS['isadmin']; }
-function isreviewer() { return $GLOBALS['isadmin'] or $GLOBALS['isreviewer']; }
+function ishelper() { return $GLOBALS['ishelper']; }
+function isreviewer() { return $GLOBALS['isreviewer']; }
 
 function print_header($active_page)
 {

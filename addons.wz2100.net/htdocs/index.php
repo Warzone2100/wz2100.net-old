@@ -4,6 +4,18 @@ include_once('lib/wzaddons.lib.php');
 
 $p = strval(@$_REQUEST['p']);
 
+if ($p === 'download')
+{
+	$file = @$_REQUEST['file'];
+	if (!$file) $file = '/'.$_REQUEST['sub'].'.wz';
+	$filename = basename($file);
+	if (strpos($file,'..') !== false || strpos($file,'//') !== false) die('access denied');
+	if (!is_file('files'.$file)) die($file.' is not a file');
+	header('Content-Disposition:attachment; filename="'.$filename.'"');
+	header('Content-type:application/octet-stream');
+	readfile('files'.$file);
+}
+
 ?>
 <!DOCTYPE html PUBLIC>
 <html>
