@@ -4,6 +4,7 @@
 # repo clutter
 buildbot.wz2100.net/
 forums.wz2100.net/
+url-rewriting
 *.inc.php
 
 # Mac clutter
