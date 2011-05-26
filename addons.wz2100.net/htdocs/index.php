@@ -13,7 +13,9 @@ if ($p === 'download')
 	if (!is_file('files'.$file)) die($file.' is not a file');
 	header('Content-Disposition:attachment; filename="'.$filename.'"');
 	header('Content-type:application/octet-stream');
+    header('Content-Length: ' . filesize('files'.$file));
 	readfile('files'.$file);
+	die();
 }
 
 ?>
@@ -65,7 +67,7 @@ function getform(curaddon)
   formdata += '<input type="hidden" id="fullid" name="fullid" value="'+curaddon.fullid+'" />';
 
   formdata += '<fieldset><legend>File</legend>';
-  formdata += '<div class="formrow"><label>File:</label><cite><span style="display:block;padding-top:2px;"><code id="filename">'+htmlentities(curaddon.filename)+'</code> <em>(<a href="/'+htmlentities(curaddon.dir+curaddon.filename)+'">Download</a>)</em></span><iframe src="/fileform.php?type=wz&amp;fullid='+curaddon.fullid+'" style="width:340px;height:32px;"></iframe></cite></div>';
+  formdata += '<div class="formrow"><label>File:</label><cite><span style="display:block;padding-top:2px;"><code id="filename">'+htmlentities(curaddon.filename)+'</code> <em>(<a href="/download'+htmlentities(curaddon.dir.substr(5)+curaddon.filename)+'">Download</a>)</em></span><iframe src="/fileform.php?type=wz&amp;fullid='+curaddon.fullid+'" style="width:340px;height:32px;"></iframe></cite></div>';
   formdata += '</fieldset>';
 
   formdata += '<fieldset><legend>General</legend>';
