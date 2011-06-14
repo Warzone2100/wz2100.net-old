@@ -33,7 +33,7 @@ if ($_FILES)
 				else
 				{
 					$curaddon['filename'] = $filename;
-					if ($curaddon['rating'] < 1)
+					if (@$curaddon['rating'] < 1)
 					{
 						unset($curaddon['ratingvotes']);
 						unset($curaddon['rating']);
