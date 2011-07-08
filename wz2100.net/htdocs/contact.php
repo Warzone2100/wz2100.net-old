@@ -1,4 +1,5 @@
 <?php
+
 // boo magic quotes
 if (get_magic_quotes_gpc()) {
     $process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
@@ -19,10 +20,12 @@ if (get_magic_quotes_gpc()) {
 $curpage = 'contact';
 
 //== persist ==
-include 'lib/persist.lib.php';
-@include persist_load('WARZONE');
+include_once(dirname(__FILE__).'/../lib/global.lib.php');
+include_once(dirname(__FILE__).'/lib/warzone.inc.php');
 
 //== forum ==
+
+/* 
 define('PHPBB_ROOT_PATH', '../forums.wz2100.net/htdocs/');
 define('IN_PHPBB', true);
 $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './';
@@ -40,6 +43,7 @@ if (in_array($user->data['group_id'], $adminlist))
 	$isadmin = true;
 }
 function isadmin() { return $GLOBALS['isadmin']; }
+*/
 
 ?>
 <!DOCTYPE html PUBLIC>
@@ -140,19 +144,5 @@ if ($isadmin && @$_POST['toedit'])
       </ul>
     </div>
   </div>
-
-<!-- Piwik -->
-<script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.page4me.ch/" : "http://stats.page4me.ch/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 2);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="http://stats.page4me.ch/piwik.php?idsite=2" style="border:0" alt="" /></p></noscript>
-<!-- End Piwik Tracking Tag -->
-
   </body> 
 </html>
