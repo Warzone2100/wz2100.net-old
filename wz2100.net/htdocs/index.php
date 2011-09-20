@@ -255,7 +255,7 @@ foreach ($topics as $row)
       <div style="clear: both;"></div> 
       <div class="content-box-not" style="margin-top:5em;" id="languages">
         <p style="text-align:center">If you do not understand English, there are fan sites available in other languages:</p>
-        <p class="backforward"><a href="http://warzone2100.de">Deutsch<small> (German)</small></a> | <a href="http://warzone2100.ho.ua/" target="_blank">&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;<small> (Russian)</small></a> | <a href="http://wz2100.info/" target="_blank">Polski<small> (Polish)</small></a> | <a href="http://wz2100.blogspot.com/" target="_blank">&#20013;&#25991;<small> (Chinese)</small></a><!-- | <a href="http://warzonefrance.probb.fr/" target="_blank">Fran&#231;ais<small> (French)</small></a>--></p>
+        <p class="backforward"><a href="http://warzone2100.de">Deutsch<small> (German)</small></a> | <a href="http://warzone2100.org.ua/" target="_blank">&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;<small> (Russian)</small></a> | <a href="http://wz2100.info/" target="_blank">Polski<small> (Polish)</small></a> | <a href="http://wz2100.blogspot.com/" target="_blank">&#20013;&#25991;<small> (Chinese)</small></a><!-- | <a href="http://warzonefrance.probb.fr/" target="_blank">Fran&#231;ais<small> (French)</small></a>--></p>
       </div>
     </div> 
 <?php print_footer(); ?>
