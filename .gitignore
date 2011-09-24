@@ -6,6 +6,8 @@ buildbot.wz2100.net/
 forums.wz2100.net/
 url-rewriting
 *.inc.php
+!addons-*.inc.php
+addons-backup*
 
 # Mac clutter
 .DS_Store
