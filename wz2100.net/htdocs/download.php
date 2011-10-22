@@ -101,6 +101,9 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
     $WARZONE['videos']['hq'] = $_POST['dlvid_hq'];
     $WARZONE['videos']['hq_size'] = $_POST['dlvid_hq_size'];
     $WARZONE['videos']['hq_md5'] = $_POST['dlvid_hq_md5'];
+    $WARZONE['videos']['std'] = $_POST['dlvid_std'];
+    $WARZONE['videos']['std_size'] = $_POST['dlvid_std_size'];
+    $WARZONE['videos']['std_md5'] = $_POST['dlvid_std_md5'];
     $WARZONE['videos']['lq'] = $_POST['dlvid_lq'];
     $WARZONE['videos']['lq_size'] = $_POST['dlvid_lq_size'];
     $WARZONE['videos']['lq_md5'] = $_POST['dlvid_lq_md5'];
@@ -150,11 +153,11 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
         </p>
         <h1>Beta or RC version</h1>
         <p>
-        	<strong style="color:red">ONLY PUT BETA OR RC VERSIONS HERE.</strong> This will place a "Try beta" or "Try RC" button on the front page, next to the Download button. No other builds should go in that precise location, since users expect a fairly stable version from a download from that location. Feel free to manually modify the front page if you have other preview builds you think should go there. (The version type dropdown also allows "alpha" to be selected, in case we ever decide to use the "stable but not feature-complete" definition of "alpha".)
+               <strong style="color:red">ONLY PUT BETA OR RC VERSIONS HERE.</strong> This will place a "Try beta" or "Try RC" button on the front page, next to the Download button. No other builds should go in that precise location, since users expect a fairly stable version from a download from that location. Feel free to manually modify the front page if you have other preview builds you think should go there. (The version type dropdown also allows "snapshot" to be selected, in case we ever decide to use the "stable but not feature-complete" definition of "snapshot".)
         </p>
         <p>
           <label for="vname">Testing version: Warzone 2100 </label><input id="dlbeta_vname" name="dlbeta_vname" type="text" class="textbox" size="15" value="<?php echo @$WARZONE['betaversion']['name']; ?>" /> (leave blank to disable) <br />
-          This is: <select name="dlbeta_type"><option value="alpha"<?php if (@$WARZONE['betaversion']['versiontype']=='alpha') echo ' selected="selected"'; ?>>alpha</option><option value="beta"<?php if (@$WARZONE['betaversion']['versiontype']=='beta') echo ' selected="selected"'; ?>>beta</option><option value="RC"<?php if (@$WARZONE['betaversion']['versiontype']=='RC') echo ' selected="selected"'; ?>>RC</option></select>
+          This is: <select name="dlbeta_type"><option value="snapshot"<?php if (@$WARZONE['betaversion']['versiontype']=='snapshot') echo ' selected="selected"'; ?>>snapshot</option><option value="beta"<?php if (@$WARZONE['betaversion']['versiontype']=='beta') echo ' selected="selected"'; ?>>beta</option><option value="RC"<?php if (@$WARZONE['betaversion']['versiontype']=='RC') echo ' selected="selected"'; ?>>RC</option></select>
         </p>
         <h2>Windows</h2>
         <p>
@@ -194,6 +197,11 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
           <label for="dlvid_hq_md5">MD5: </label><input id="dlvid_hq_md5" name="dlvid_hq_md5" type="text" class="textbox" size="33" value="<?php echo @$WARZONE['videos']['hq_md5']; ?>" />
         </p>
         <p>
+          <label for="dlvid_std">STD: </label><input id="dlvid_std" name="dlvid_std" type="text" class="textbox" size="70" value="<?php echo @$WARZONE['videos']['std']; ?>" /><br />
+          <label for="dlvid_std_size">Size: </label><input id="dlvid_std_size" name="dlvid_std_size" type="text" class="textbox" size="10" value="<?php echo @$WARZONE['videos']['std_size']; ?>" />
+          <label for="dlvid_std_md5">MD5: </label><input id="dlvid_std_md5" name="dlvid_std_md5" type="text" class="textbox" size="33" value="<?php echo @$WARZONE['videos']['std_md5']; ?>" />
+        </p>
+        <p>
           <label for="dlvid_lq">LQ: </label><input id="dlvid_lq" name="dlvid_lq" type="text" class="textbox" size="70" value="<?php echo @$WARZONE['videos']['lq']; ?>" /><br />
           <label for="dlvid_lq_size">Size: </label><input id="dlvid_lq_size" name="dlvid_lq_size" type="text" class="textbox" size="10" value="<?php echo @$WARZONE['videos']['lq_size']; ?>" />
           <label for="dlvid_lq_md5">MD5: </label><input id="dlvid_lq_md5" name="dlvid_lq_md5" type="text" class="textbox" size="33" value="<?php echo @$WARZONE['videos']['lq_md5']; ?>" />
@@ -216,7 +224,10 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
         <div style="clear:both"></div>
         <h3 id="videos-win"><span>Videos</span></h3>
         <div class="downloadbtn" style="float:left;">
-          <a href="<?php echo @$WARZONE['videos']['hq'] ?>" class="betaversion"><em>Download videos</em> <strong>standard quality</strong> <sub>545 MB</sub></a>
+          <a href="<?php echo @$WARZONE['videos']['hq'] ?>" class="betaversion"><em>Download videos</em> <strong>high quality</strong> <sub>921 MB</sub></a>
+        </div>
+        <div class="downloadbtn" style="float:left;">
+          <a href="<?php echo @$WARZONE['videos']['std'] ?>" class="betaversion"><em>Download videos</em> <strong>standard quality</strong> <sub>545 MB</sub></a>
         </div>
         <div class="downloadbtn" style="float:left;">
           <a href="<?php echo @$WARZONE['videos']['lq'] ?>" class="betaversion"><em>Download videos</em> <strong>low quality</strong> <sub>162 MB</sub></a>
@@ -255,7 +266,10 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
         </ol>
         <h3 id="videos-mac"><span>Videos</span></h3>
         <div class="downloadbtn" style="float:left;">
-          <a href="<?php echo @$WARZONE['videos']['hq'] ?>" class="betaversion"><em>Download videos</em> <strong>standard quality</strong> <sub>545 MB</sub></a>
+          <a href="<?php echo @$WARZONE['videos']['hq'] ?>" class="betaversion"><em>Download videos</em> <strong>high quality</strong> <sub>920 MB</sub></a>
+        </div>
+        <div class="downloadbtn" style="float:left;">
+          <a href="<?php echo @$WARZONE['videos']['std'] ?>" class="betaversion"><em>Download videos</em> <strong>standard quality</strong> <sub>545 MB</sub></a>
         </div>
         <div class="downloadbtn" style="float:left;">
           <a href="<?php echo @$WARZONE['videos']['lq'] ?>" class="betaversion"><em>Download videos</em> <strong>low quality</strong> <sub>162 MB</sub></a>
@@ -286,7 +300,10 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
         </p>
         <h3 id="videos-src"><span>Videos</span></h3>
         <div class="downloadbtn" style="float:left;">
-          <a href="<?php echo @$WARZONE['videos']['hq'] ?>" class="betaversion"><em>Download videos</em> <strong>standard quality</strong> <sub>545 MB</sub></a>
+          <a href="<?php echo @$WARZONE['videos']['hq'] ?>" class="betaversion"><em>Download videos</em> <strong>high quality</strong> <sub>920 MB</sub></a>
+        </div>
+        <div class="downloadbtn" style="float:left;">
+          <a href="<?php echo @$WARZONE['videos']['std'] ?>" class="betaversion"><em>Download videos</em> <strong>standard quality</strong> <sub>545 MB</sub></a>
         </div>
         <div class="downloadbtn" style="float:left;">
           <a href="<?php echo @$WARZONE['videos']['lq'] ?>" class="betaversion"><em>Download videos</em> <strong>low quality</strong> <sub>162 MB</sub></a>
