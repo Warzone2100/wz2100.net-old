@@ -126,14 +126,14 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
           <label for="dl_win_size">Size: </label><input id="dl_win_size" name="dl_win_size" type="text" class="textbox" size="10" value="<?php echo @$WARZONE['currentversion']['dl_win_size']; ?>" />
           <label for="dl_win_md5">MD5: </label><input id="dl_win_md5" name="dl_win_md5" type="text" class="textbox" size="33" value="<?php echo @$WARZONE['currentversion']['dl_win_md5']; ?>" />
         </p>
-        <h2>Mac OS X - standard quality videos</h2>
+        <h2>Mac OS X - high quality videos</h2>
         <p>
           <label for="dl_mac">URL: </label><input id="dl_mac" name="dl_mac" type="text" class="textbox" size="70" value="<?php echo @$WARZONE['currentversion']['dl_mac']; ?>" /><br />
           <label for="dl_mac_size">Size: </label><input id="dl_mac_size" name="dl_mac_size" type="text" class="textbox" size="10" value="<?php echo @$WARZONE['currentversion']['dl_mac_size']; ?>" />
           <label for="dl_mac_md5">MD5: </label><input id="dl_mac_md5" name="dl_mac_md5" type="text" class="textbox" size="33" value="<?php echo @$WARZONE['currentversion']['dl_mac_md5']; ?>" /><br />
           <label for="dl_mac_size">For </label><input id="dl_mac_version" name="dl_mac_version" type="text" class="textbox" size="20" value="<?php echo @$WARZONE['currentversion']['dl_mac_version']; ?>" />
         </p>
-        <h2>Mac OS X - low quality videos</h2>
+        <h2>Mac OS X - standard quality videos</h2>
         <p>
           <label for="dl_mac_lq">URL: </label><input id="dl_mac_lq" name="dl_mac_lq" type="text" class="textbox" size="70" value="<?php echo @$WARZONE['currentversion']['dl_mac_lq']; ?>" /><br />
           <label for="dl_mac_lq_size">Size: </label><input id="dl_mac_lq_size" name="dl_mac_lq_size" type="text" class="textbox" size="10" value="<?php echo @$WARZONE['currentversion']['dl_mac_lq_size']; ?>" />
@@ -165,14 +165,14 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
           <label for="dl_win_size">Size: </label><input id="dlbeta_win_size" name="dlbeta_win_size" type="text" class="textbox" size="10" value="<?php echo @$WARZONE['betaversion']['dl_win_size']; ?>" />
           <label for="dl_win_md5">MD5: </label><input id="dlbeta_win_md5" name="dlbeta_win_md5" type="text" class="textbox" size="33" value="<?php echo @$WARZONE['betaversion']['dl_win_md5']; ?>" />
         </p>
-        <h2>Mac OS X - standard quality videos</h2>
+        <h2>Mac OS X - high quality videos</h2>
         <p>
           <label for="dl_mac">URL: </label><input id="dlbeta_mac" name="dlbeta_mac" type="text" class="textbox" size="70" value="<?php echo @$WARZONE['betaversion']['dl_mac']; ?>" /><br />
           <label for="dl_mac_size">Size: </label><input id="dlbeta_mac_size" name="dlbeta_mac_size" type="text" class="textbox" size="10" value="<?php echo @$WARZONE['betaversion']['dl_mac_size']; ?>" />
           <label for="dl_mac_md5">MD5: </label><input id="dlbeta_mac_md5" name="dlbeta_mac_md5" type="text" class="textbox" size="33" value="<?php echo @$WARZONE['betaversion']['dl_mac_md5']; ?>" /><br />
           <label for="dl_mac_size">For </label><input id="dlbeta_mac_version" name="dlbeta_mac_version" type="text" class="textbox" size="20" value="<?php echo @$WARZONE['betaversion']['dl_mac_version']; ?>" />
         </p>
-        <h2>Mac OS X - low quality videos</h2>
+        <h2>Mac OS X - standard quality videos</h2>
         <p>
           <label for="dl_mac_lq">URL: </label><input id="dlbeta_mac_lq" name="dlbeta_mac_lq" type="text" class="textbox" size="70" value="<?php echo @$WARZONE['betaversion']['dl_mac_lq']; ?>" /><br />
           <label for="dl_mac_lq_size">Size: </label><input id="dlbeta_mac_lq_size" name="dlbeta_mac_lq_size" type="text" class="textbox" size="10" value="<?php echo @$WARZONE['betaversion']['dl_mac_lq_size']; ?>" />
@@ -250,10 +250,10 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
           For Mac OS X 10.4+
         </p>
         <div class="downloadbtn" style="float:left;">
-          <a href="<?php echo @$WARZONE['currentversion']['dl_mac'] ?>"><em>Download standard</em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['currentversion']['name']; ?> <small>with standard quality videos</small> <small>for <?php echo @$WARZONE['currentversion']['dl_mac_version']; ?><sub><?php echo @$WARZONE['currentversion']['dl_mac_size']; ?></sub></small></a>
+          <a href="<?php echo @$WARZONE['currentversion']['dl_mac'] ?>"><em>Download High Quality</em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['currentversion']['name']; ?> <small>with high quality videos</small> <small>for <?php echo @$WARZONE['currentversion']['dl_mac_version']; ?><sub><?php echo @$WARZONE['currentversion']['dl_mac_size']; ?></sub></small></a>
         </div>
         <div class="downloadbtn" style="float:left;">
-          <a href="<?php echo @$WARZONE['currentversion']['dl_mac_lq'] ?>" class="betaversion"><em>Download LQ</em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['currentversion']['name']; ?> <small>with low quality videos</small> <small>for <?php echo @$WARZONE['currentversion']['dl_mac_version']; ?> <sub><?php echo @$WARZONE['currentversion']['dl_mac_lq_size']; ?></sub></small></a>
+          <a href="<?php echo @$WARZONE['currentversion']['dl_mac_lq'] ?>" class="betaversion"><em>Download Standard</em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['currentversion']['name']; ?> <small>with standard quality videos</small> <small>for <?php echo @$WARZONE['currentversion']['dl_mac_version']; ?> <sub><?php echo @$WARZONE['currentversion']['dl_mac_lq_size']; ?></sub></small></a>
         </div>
         <div class="downloadbtn" style="float:left;">
           <a href="<?php echo @$WARZONE['currentversion']['dl_mac_novid'] ?>" class="betaversion"><em>Download no video</em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['currentversion']['name']; ?> <small>no videos</small> <small>for <?php echo @$WARZONE['currentversion']['dl_mac_version']; ?> <sub><?php echo @$WARZONE['currentversion']['dl_mac_novid_size']; ?></sub></small></a>
