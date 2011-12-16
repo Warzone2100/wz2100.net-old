@@ -8,6 +8,7 @@ url-rewriting
 *.inc.php
 !addons-*.inc.php
 addons-backup*
+.htaccess
 
 # Mac clutter
 .DS_Store
