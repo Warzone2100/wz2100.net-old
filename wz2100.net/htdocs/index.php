@@ -168,10 +168,10 @@ if (betaversion != '')
 <h1 style="margin-top:0;">Screenshots</h1>
 <div style="text-align: center;" class="content-box">
 <p>
-<a style="padding:0; border:none" href="<?php echo $protocol; ?>www.wz2100.net/screenshots"><img src="<?php echo $protocol; ?>wz2100.net/images/1_thumb.jpg" alt="" title="" height="120" /></a> 
-<a style="padding:0; border:none" href="<?php echo $protocol; ?>www.wz2100.net/screenshots"><img src="<?php echo $protocol; ?>wz2100.net/images/2_thumb.jpg" alt="" title="" height="120" /></a> 
-<a style="padding:0; border:none" href="<?php echo $protocol; ?>www.wz2100.net/screenshots"><img src="<?php echo $protocol; ?>wz2100.net/images/3_thumb.jpg" alt="" title="" height="120" /></a> 
-<a style="padding:0; border:none" href="<?php echo $protocol; ?>www.wz2100.net/screenshots"><img src="<?php echo $protocol; ?>wz2100.net/images/4_thumb.jpg" alt="" title="" height="120" /></a> 
+<a style="padding:0; border:none" href="<?php echo $protocol; ?>wz2100.net/screenshots.php"><img src="<?php echo $protocol; ?>wz2100.net/images/1_thumb.jpg" alt="" title="" height="120" /></a> 
+<a style="padding:0; border:none" href="<?php echo $protocol; ?>wz2100.net/screenshots.php"><img src="<?php echo $protocol; ?>wz2100.net/images/2_thumb.jpg" alt="" title="" height="120" /></a> 
+<a style="padding:0; border:none" href="<?php echo $protocol; ?>wz2100.net/screenshots.php"><img src="<?php echo $protocol; ?>wz2100.net/images/3_thumb.jpg" alt="" title="" height="120" /></a> 
+<a style="padding:0; border:none" href="<?php echo $protocol; ?>wz2100.net/screenshots.php"><img src="<?php echo $protocol; ?>wz2100.net/images/4_thumb.jpg" alt="" title="" height="120" /></a> 
 </p>
 <p class="backforward">
 <a href="<?php echo $protocol; ?>wz2100.net/screenshots">More screenshots &raquo;</a>
