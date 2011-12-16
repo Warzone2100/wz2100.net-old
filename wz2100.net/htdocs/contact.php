@@ -109,7 +109,7 @@ if ($isadmin && @$_POST['toedit'])
 	//$editedtext = str_replace("\n\n",'</p><p>',$editedtext);
 	//$editedtext = str_replace("\n",'<br />',$editedtext);
 	$WARZONE['pages'][$curpage]['html'] = '<p>'.$editedtext.'</p>';
-	persist_save('WARZONE') || print('error');
+	persist_save('WARZONE', dirname(__FILE__) . '/lib/warzone.inc.php') || print('error');
 	echo '<p>[edit successful]</p>';
 }
 	if ($isadmin)
