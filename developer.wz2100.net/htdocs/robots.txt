@@ -1,8 +1,10 @@
 User-agent: *
-
+Disallow: /timeline
 Disallow: /changeset/
 Disallow: /report/
 Disallow: /attachment/
 Disallow: /log/
 Disallow: /wiki/BadContent
 Disallow: /wiki/BadIP
+Disallow: /browser/
+
