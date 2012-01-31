@@ -3,9 +3,9 @@
 if (@$showmaster)
 {
 ?>
-<h2>Master Addons List</h2>
+<h2>3.1 Addons List</h2>
 <p class="error">
-	<strong>Warning:</strong> Addons shown here are for the <em>master</em> version, and may be incompatible with the latest released version of Warzone. Unless you are using the master version, please consult the <a href="/">Stable Addons List</a> instead.
+	<strong>Warning:</strong> Addons shown here are for the <em>3.1</em> version, and may be incompatible with older versions of Warzone. Unless you are using the 3.1 version, please consult the <a href="/old">Old Addons List</a> instead.
 </p>
 <?php
 }
@@ -46,6 +46,22 @@ function usetab(that)
 </h3>
 <?php
 
+function selected($name, $value)
+{
+	if (@$_REQUEST[$name] == $value)
+	{
+		echo ' selected="selected"';
+	}
+}
+
+?>
+<form>
+Minimum rating: <select name="minrating"><option value="1"<?php selected('minrating', 1); ?>>Any</option><option value="2"<?php selected('minrating', 2); ?>>2</option><option value="3"<?php selected('minrating', 3); ?>>3</option><option value="4"<?php selected('minrating', 4); ?>>4</option></select>
+Players: <select name="players"><option value=""<?php selected('players', ''); ?>>Any</option><option value="2"<?php selected('players', 2); ?>>2</option><option value="3"<?php selected('players', 3); ?>>3</option><option value="4"<?php selected('players', 4); ?>>4</option><option value="5"<?php selected('players', 5); ?>>5</option><option value="6"<?php selected('players', 6); ?>>6</option><option value="7"<?php selected('players', 7); ?>>7</option><option value="8"<?php selected('players', 8); ?>>8</option><option value="9"<?php selected('players', 9); ?>>9</option><option value="10"<?php selected('players', 10); ?>>10</option></select>
+<button type="submit">Filter</button>
+</form>
+<?php
+
 function rating_cmp($a, $b)
 {
     if (@$a['rating'] == @$b['rating']) {
@@ -56,12 +72,26 @@ function rating_cmp($a, $b)
 usort($_ADDONS['map'], 'rating_cmp');
 usort($_ADDONS['mod'], 'rating_cmp');
 
+$atleastone = false;
 foreach ($_ADDONS['map'] as $addon)
 {
 	if ($addon['players'] != 2 && $addon['players'] != 4 && $addon['players'] != 8 && !@$showmaster)
 	{
 		continue;
 	}
+	if (@$_REQUEST['players'] && $addon['players'] != $_REQUEST['players'])
+	{
+		continue;
+	}
+	if (@$_REQUEST['minrating'] && @$addon['rating'] < $_REQUEST['minrating'])
+	{
+		continue;
+	}
+	if (@$_REQUEST['maxrating'] && @$addon['rating'] > $_REQUEST['maxrating'])
+	{
+		continue;
+	}
+	$atleastone = true;
 ?>
 <div class="addon">
 	<?php if (checkuser($addon['submitterid'])) echo '<div style="float:right"><a href="/submit/'.$addon['fullid'].'">Edit</a></div>'; ?>
@@ -102,6 +132,9 @@ foreach ($_ADDONS['map'] as $addon)
 </div>
 <?php
 }
+
+if (!$atleastone) echo '<p><em>There are no maps matching your criteria.</em></p>';
+
 ?>
 </div>
 <div id="modssection"><h3 id="mods">
