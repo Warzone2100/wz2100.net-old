@@ -378,11 +378,11 @@ ul.gallery li img
 
     <div id="g_cont" class="warzone-content"> 
 <?php
-if (!$p)
+if (!$p || $p == '2.3' || $p == 'old')
 {
   include 'addons-list.inc.php';
 }
-else if ($p == 'master')
+else if ($p == 'master' || $p == '3.1' || $p == 'beta')
 {
   $showmaster = true;
   include 'addons-list.inc.php';
