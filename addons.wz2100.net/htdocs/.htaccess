@@ -24,6 +24,7 @@ RewriteRule ^mod\/([A-Za-z0-9\/-]*[A-Za-z0-9-])\/?$ index.php?p=view&fullid=mod/
 RewriteRule ^unapproved\/map\/([A-Za-z0-9\/-]*[A-Za-z0-9-])\/?$ index.php?p=view&fullid=unapproved/map/$1 [L,QSA]
 RewriteRule ^unapproved\/mod\/([A-Za-z0-9\/-]*[A-Za-z0-9-])\/?$ index.php?p=view&fullid=unapproved/mod/$1 [L,QSA]
 RewriteRule ^([A-Za-z0-9-]+)\/?$ index.php?p=$1 [L,QSA]
+RewriteRule ^([0-9.]+)\/?$ index.php?p=$1 [L,QSA]
 RewriteRule ^([A-Za-z0-9-]+)\/([A-Za-z0-9\/-]*[A-Za-z0-9-])\/?$ index.php?p=$1&sub=$2 [L,QSA]
 
 </IfModule>
