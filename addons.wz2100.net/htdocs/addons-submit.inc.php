@@ -37,8 +37,14 @@ if ($loggedinuserid)
 ?>
 <div id="addonform">
 <p>
-If you are uploading a map, it must be named: <code>#c-[mapname].wz</code>, where # is the number of players.
+If you are uploading a map, it must be named: <code>#c-[mapname].wz</code>, where # is the number of players.<br />
+[mapname] may not contain any spaces or exceed 35 characters in length.
 </p>
+<ul>
+	<li><strong>Do not</strong> create maps that have the <em>same name</em>.</li>
+	<li><strong>Do not</strong> convert 8 or 4 player maps to 7/6/5/3 players <em>and leave the name the same!</em></li>
+	<li>All maps should have a version number in them, until the final map is done.</li>
+</ul>
 <?php
   $youraddons = getyouraddons();
   if ($youraddons)
