@@ -44,6 +44,8 @@ If you are uploading a map, it must be named: <code>#c-[mapname].wz</code>, wher
 	<li><strong>Do not</strong> create maps that have the <em>same name</em>.</li>
 	<li><strong>Do not</strong> convert 8 or 4 player maps to 7/6/5/3 players <em>and leave the name the same!</em></li>
 	<li>All maps should have a version number in them, until the final map is done.</li>
+    <li>All mods with maps in them should be listed under MODS, not maps!</li>
+    <li>Mods <strong>must</strong> have <a href="http://developer.wz2100.net/wiki/.wz#Subtypes">the right extension for its type</a> (you cannot currently change the type after uploading).</li>
 </ul>
 <?php
   $youraddons = getyouraddons();
