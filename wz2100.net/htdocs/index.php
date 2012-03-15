@@ -94,8 +94,24 @@ var betaversion = '<?php echo @$WARZONE['betaversion']['name'] ?>';
 var betaversion_type = '<?php echo @$WARZONE['betaversion']['type'] ?>';
 var betaversion_dl_win = '<?php echo @$WARZONE['betaversion']['dl_win'] ?>';
 var betaversion_dl_win_size = '<?php echo @$WARZONE['betaversion']['dl_win_size'] ?>';
+<?php
+	if (@$WARZONE['betaversion']['dl_mac'] != "") {
+?>
+var betaversion_dl_mac = '<?php echo @$WARZONE['betaversion']['dl_mac'] ?>';
+var betaversion_dl_mac_size = '<?php echo @$WARZONE['betaversion']['dl_mac_size'] ?>';
+<?php
+	} elseif (@$WARZONE['betaversion']['dl_mac_lq'] != "") {
+?>
+var betaversion_dl_mac = '<?php echo @$WARZONE['betaversion']['dl_mac_lq'] ?>';
+var betaversion_dl_mac_size = '<?php echo @$WARZONE['betaversion']['dl_mac_lq_size'] ?>';
+<?php
+	} else {
+?>
 var betaversion_dl_mac = '<?php echo @$WARZONE['betaversion']['dl_mac_novid'] ?>';
 var betaversion_dl_mac_size = '<?php echo @$WARZONE['betaversion']['dl_mac_novid_size'] ?>';
+<?php
+	}
+?>
 var betaversion_dl_src = '<?php echo @$WARZONE['betaversion']['dl_src'] ?>';
 var betaversion_dl_src_size = '<?php echo @$WARZONE['betaversion']['dl_src_size'] ?>';
 

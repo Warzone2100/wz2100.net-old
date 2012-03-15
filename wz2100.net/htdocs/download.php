@@ -247,7 +247,7 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
       <div class="content-box-margin" id="download-mac">
         <h2>Mac OS X</h2>
         <p class="byline">
-          For Mac OS X 10.4+
+          For <?php echo @$WARZONE['currentversion']['dl_mac_version']; ?>
         </p>
         <div class="downloadbtn" style="float:left;">
           <a href="<?php echo @$WARZONE['currentversion']['dl_mac'] ?>"><em>Download High Quality</em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['currentversion']['name']; ?> <small>with high quality videos</small> <small>for <?php echo @$WARZONE['currentversion']['dl_mac_version']; ?><sub><?php echo @$WARZONE['currentversion']['dl_mac_size']; ?></sub></small></a>
@@ -425,8 +425,26 @@ if (@$WARZONE['betaversion']['name'])
       <div class="content-box-margin" id="betadownload-mac">
         <h2>Mac OS X</h2>
         <p class="byline">
-          For Mac OS X 10.5+
+          For <?php echo @$WARZONE['betaversion']['dl_mac_version']; ?>
         </p>
+<?php
+	if (@$WARZONE['betaversion']['dl_mac'] == "") {
+	} else {
+?>
+        <div class="downloadbtn" style="float:left;">
+          <a href="<?php echo @$WARZONE['betaversion']['dl_mac'] ?>" class="betaversion"><em>Test the <?php echo $WARZONE['betaversion']['versiontype'] ?></em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['betaversion']['name']; ?> <small>with high quality videos</small> <small>for <?php echo @$WARZONE['betaversion']['dl_mac_version']; ?><sub><?php echo @$WARZONE['betaversion']['dl_mac_size']; ?></sub></small></a>
+        </div>
+<?php
+	}
+	if (@$WARZONE['betaversion']['dl_mac_lq'] == "") {
+	} else {
+?>
+        <div class="downloadbtn" style="float:left;">
+          <a href="<?php echo @$WARZONE['betaversion']['dl_mac_lq'] ?>" class="betaversion"><em>Test the <?php echo $WARZONE['betaversion']['versiontype'] ?></em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['betaversion']['name']; ?> <small>with standard quality videos</small> <small>for <?php echo @$WARZONE['betaversion']['dl_mac_version']; ?> <sub><?php echo @$WARZONE['betaversion']['dl_mac_lq_size']; ?></sub></small></a>
+        </div>
+<?php
+	}
+?>
         <div class="downloadbtn" style="float:left;">
           <a href="<?php echo @$WARZONE['betaversion']['dl_mac_novid'] ?>" class="betaversion"><em>Test the <?php echo $WARZONE['betaversion']['versiontype'] ?></em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['betaversion']['name']; ?> <small>with no videos</small> <small>for <?php echo @$WARZONE['betaversion']['dl_mac_version']; ?><sub><?php echo @$WARZONE['betaversion']['dl_mac_novid_size']; ?></sub></small></a>
         </div>
