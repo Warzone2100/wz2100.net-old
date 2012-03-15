@@ -428,16 +428,14 @@ if (@$WARZONE['betaversion']['name'])
           For <?php echo @$WARZONE['betaversion']['dl_mac_version']; ?>
         </p>
 <?php
-	if (@$WARZONE['betaversion']['dl_mac'] == "") {
-	} else {
+	if (@$WARZONE['betaversion']['dl_mac'] != "") {
 ?>
         <div class="downloadbtn" style="float:left;">
           <a href="<?php echo @$WARZONE['betaversion']['dl_mac'] ?>" class="betaversion"><em>Test the <?php echo $WARZONE['betaversion']['versiontype'] ?></em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['betaversion']['name']; ?> <small>with high quality videos</small> <small>for <?php echo @$WARZONE['betaversion']['dl_mac_version']; ?><sub><?php echo @$WARZONE['betaversion']['dl_mac_size']; ?></sub></small></a>
         </div>
 <?php
 	}
-	if (@$WARZONE['betaversion']['dl_mac_lq'] == "") {
-	} else {
+	if (@$WARZONE['betaversion']['dl_mac_lq'] != "") {
 ?>
         <div class="downloadbtn" style="float:left;">
           <a href="<?php echo @$WARZONE['betaversion']['dl_mac_lq'] ?>" class="betaversion"><em>Test the <?php echo $WARZONE['betaversion']['versiontype'] ?></em> <strong>Warzone 2100</strong> <?php echo @$WARZONE['betaversion']['name']; ?> <small>with standard quality videos</small> <small>for <?php echo @$WARZONE['betaversion']['dl_mac_version']; ?> <sub><?php echo @$WARZONE['betaversion']['dl_mac_lq_size']; ?></sub></small></a>
