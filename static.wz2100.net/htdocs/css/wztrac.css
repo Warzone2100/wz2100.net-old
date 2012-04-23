@@ -211,3 +211,84 @@ max-width: 960px;
 	background: #30455C;
 	border: 0;
 }
+
+#translation_status
+{
+	list-style-type: none;
+}
+
+#translation_status li
+{
+	width: 450px;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: right;
+}
+
+#translation_status .translation_complete
+{
+	color: green;
+}
+
+#translation_status .translation_unfinished
+{
+	color: orange;
+}
+
+#translation_status .translation_incomplete
+{
+	color: red;
+}
+
+#translation_status span
+{
+	display: block;
+	height: 16px;
+}
+
+#translation_status .messages_translated span
+{
+	float: right;
+}
+
+#translation_status strong, #translation_status img
+{
+	float: left;
+}
+
+#translation_status img
+{
+	margin: 2px 5px 0 2px;
+}
+
+#translation_status .messages_translated
+{
+	margin: 2px 0 2px 5px;
+	float: right;
+	background: green;
+	background-image: linear-gradient(bottom, rgb(0,128,0) 0%, rgb(0,255,0) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(0,128,0) 0%, rgb(0,255,0) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(0,128,0) 0%, rgb(0,255,0) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(0,128,0) 0%, rgb(0,255,0) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(0,128,0) 0%, rgb(0,255,0) 100%);
+}
+
+#translation_status .messages_untranslated
+{
+	background: red;
+	background-image: linear-gradient(bottom, rgb(128,0,0) 0%, rgb(255,0,0) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(128,0,0) 0%, rgb(255,0,0) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(128,0,0) 0%, rgb(255,0,0) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(128,0,0) 0%, rgb(255,0,0) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(128,0,0) 0%, rgb(255,0,0) 100%);
+}
+
+#translation_status .messages_fuzzy
+{
+	background: blue;
+	background-image: linear-gradient(bottom, rgb(0,0,128) 0%, rgb(0,0,255) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(0,0,128) 0%, rgb(0,0,255) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(0,0,128) 0%, rgb(0,0,255) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(0,0,128) 0%, rgb(0,0,255) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(0,0,128) 0%, rgb(0,0,255) 100%);
+}
