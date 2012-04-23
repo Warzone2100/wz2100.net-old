@@ -2,3 +2,6 @@
 log/*
 cgi-bin/*
 htdocs/files/*
+
+# Backups
+*.inc.php*
