@@ -1,0 +1,223 @@
+<!--! vim: set et sts=2 sw=2 ft=genshi: -->
+<?python
+  from genshi.filters.transform import Transformer as BaseTransformer
+  from urlparse import urljoin as _urljoin
+  import re
+
+  class Transformer(BaseTransformer):
+      """Wrapper class to add a ``matchWrap`` method to the Transformer class."""
+      def matchWrap(self, pattern, element):
+          """Wrap text matching a regular expression in an element."""
+          return self.apply(MatchWrapTransformation(pattern, element))
+
+  ##############################################################################
+  # Start of MatchWrapTransformation implementation
+  ##############################################################################
+
+  from genshi.builder import Element
+  from genshi.core import TEXT, Markup
+  from re import compile as re_compile
+
+  def wrap_text(old_data, new_data):
+      if isinstance(old_data, Markup):
+          new_data = Markup(new_data)
+      return None, (TEXT, new_data, (None, -1, -1))
+
+  class MatchWrapTransformation(object):
+      """Wrap text matching a regular expression in an element."""
+      def __init__(self, pattern, element):
+          """Create the transform.
+
+          :param pattern: A regular expression object, or string.
+          :param element: XML element to wrap the matched text in.
+          """
+          self.pattern = hasattr(pattern, 'match') and pattern or re_compile(pattern)
+          self.element = hasattr(element, 'generate') and element or Element(element)
+
+      def __call__(self, stream):
+          """Apply the transform filter to the marked stream.
+
+          :param stream: The marked event stream to filter.
+          """
+          for mark, (kind, data, pos) in stream:
+              if mark and kind is TEXT:
+                  text_returned = 0
+                  for match in self.pattern.finditer(data):
+                      # Return the text before the match
+                      if match.start() > text_returned:
+                          yield wrap_text(data, data[text_returned:match.start()])
+
+                      element = list(self.element.generate())
+
+                      # Now insert the start tag
+                      for prefix in element[:-1]:
+                          yield None, prefix
+
+                      # Return the match
+                      yield wrap_text(data, match.group())
+
+                      # Close the tag
+                      yield None, element[-1]
+
+                      text_returned = match.end()
+
+                  # Return the text after the match
+                  if len(data) > text_returned:
+                      yield wrap_text(data, data[text_returned:])
+              else:
+                  yield mark, (kind, data, pos)
+
+  ##############################################################################
+  # End of MatchWrapTransformation implementation
+  ##############################################################################
+
+  abs_main_site_host = 'http://wz2100.net'
+  if req.scheme == 'https':
+    abs_static_site_host = 'https://static.wz2100.net'
+    abs_stats_site_host = 'https://stats.wz2100.net'
+  else:
+    if 'warzone2100.org' in req.server_name:
+      abs_static_site_host = '%s://static.wz2100.net' % (req.scheme)
+      abs_stats_site_host = '%s://stats.wz2100.net' % (req.scheme)
+    else:
+      abs_static_site_host = '%s://static.wz2100.net' % (req.scheme)
+      abs_stats_site_host = '%s://stats.wz2100.net' % (req.scheme)
+  top_level_navigation = [
+      ('Home', '', 'house'),
+      ('Download', 'download', 'server_go'),
+      ('FAQ', 'faq', 'help'),
+      ('User Guide', 'user-guide', 'script'),
+      ('Forums', 'http://forums.wz2100.net/', 'comments'),
+      ('Development', req.base_url, 'wrench'),
+  ]
+  footer_navigation = [
+      'contact',
+      'newsletter',
+      'site-policy',
+      'privacy-policy',
+      'imprint',
+      'credits',
+      'license',
+  ]
+
+  wiki_pages = [
+      'about',
+      'development',
+      'download',
+      'faq',
+      'features',
+      'screenshots',
+      'user-guide',
+  ]
+
+  # Default page
+  home_page = 'frontpage'
+
+  # Override the title for some pages
+  override_page_titles = {
+      "faq":  "FAQ",
+  }
+
+  #trac_base_url = trac_env.config.get('trac', 'base_url')
+  special_wiki_pages = {
+      "faq":  "FAQ",
+  }
+
+  def gen_top_level_link(link):
+    if link.startswith('http'):
+      return link
+    else:
+      return urljoin(abs_main_site_host, link)
+
+  def do_highlight_top_level_link(link, page=None):
+    link = link or home_page
+    page = page or page_name
+    if page == link:
+      return {'id': 'active'}
+
+  def urljoin(first, second, *rest):
+      str = _urljoin(first, second)
+      for part in rest:
+          str = _urljoin(str, part)
+      return str
+?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/" py:strip="">
+
+  <!--! Add site-specific style sheet -->
+  <head py:match="head" py:attrs="select('@*')">
+    ${select('*|comment()|text()')}
+    <!-- <link py:for="css in ['site-global', 'trac']" rel="stylesheet" type="text/css" href="${ urljoin(abs_static_site_host, 'css/', '%s.css' % css) }" /> -->
+    <link rel="stylesheet" type="text/css" href="http://static.wz2100.net/css/wztrac.css" />
+  </head>
+
+  <!--! Redefine the "navigation" function to add an "id" attribute to all navigation items -->
+  <div py:def="navigation(category)" id="${category}" class="nav">
+    <ul py:if="chrome.nav[category]">
+      <li py:for="idx, item in  enumerate(chrome.nav[category])"
+          class="${classes(first_last(idx, chrome.nav[category]), active=item.active)}" id="nav_${item.name}">${item.label}</li>
+    </ul>
+  </div>
+
+  <body py:match="body" py:attrs="select('@*')">
+    <!--! Add site-specific header -->
+
+    <div id="wrapper">
+    <div class="overall-header-home"><div id="overall-header">
+    <div><a href="http://wz2100.net"><span><img src="http://static.wz2100.net/theme/warzone2100.png" id="overall-logo" width="217" height="100" alt="Warzone 2100" /></span></a></div>
+    <ul>
+    <!-- these are all on one line because of an IE6/IE7 bug. Don't touch. -->
+    <li class="tab-home"><a href="http://wz2100.net/" title="About Warzone 2100"><span>Home</span></a></li><li class="tab-download"><a href="http://developer.wz2100.net/wiki/Download" title="Free download"><span>Download</span></a></li><li class="tab-addons"><a href="http://addons.wz2100.net/" title="Maps and mods"><span>Addons</span></a></li><li class="tab-faq"><a href="http://wz2100.net/faq" title="Frequently Asked Questions"><span>FAQ</span></a></li><li class="tab-guide"><a href="http://guide.wz2100.net/" title="User manual"><span>Guide</span></a></li><li class="tab-forum"><a href="http://forums.wz2100.net/" title="Community forums"><span>Forum</span></a></li><li class="tab-dev cur"><a href="http://developer.wz2100.net/" title="Development resources"><span>Development</span></a></li></ul>
+    <div class="overall-header-shadow"></div>
+    </div></div>
+
+    <div id="c-wrapper">
+        
+  <div id="g_siteline">
+      <div class="right">
+        ${select('div[@id="banner"]/form[@id="search"]')}
+      </div>
+      <div class="left">
+        ${select('div[@id="banner"]/div[@id="metanav"]')}
+      </div>
+      <div style="clear: both;" />
+  </div>
+
+    ${select('div[@id="mainnav"]')}
+    ${select('div[@id="main"]')}
+    ${select('div[@id="footer"]')}
+
+    </div>
+    
+<div style="clear: both;"></div> 
+
+    <div id="g_foot" class="warzone-footer">
+      <ul>
+        <li>
+          <a href="http://wz2100.net/contact">Contact</a>
+        </li><li>
+          <a href="http://wz2100.net/feed.atom">RSS</a>
+
+        </li><li>
+          <a href="http://wz2100.net/site-policy">Terms of Service</a>
+        </li><li>
+          <a href="http://wz2100.net/privacy-policy">Privacy</a>
+        </li><li>
+          <a href="http://wz2100.net/imprint">Imprint</a>
+        </li><li>
+          <a href="http://wz2100.net/credits">Credits</a>
+        </li><li>
+          <a href="http://wz2100.net/license">License</a>
+        </li>
+      </ul>
+    </div>
+</div>
+  </body>
+
+  <!--! Add a nice icon in front of the "login" or "logged in as" metanav
+        entry. Show usernames of logged in users as <strong>. -->
+  <li py:match="li[@id='nav_login']" py:attrs="select('@*')">
+    <span class="icon">${ select('*|text()') | Transformer('*|text()').matchWrap(r'(?i)(?&lt;=logged in as )\w+', 'strong') }</span>
+  </li>
+
+</html>
