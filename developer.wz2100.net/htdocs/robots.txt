@@ -7,4 +7,5 @@ Disallow: /log/
 Disallow: /wiki/BadContent
 Disallow: /wiki/BadIP
 Disallow: /browser/
+Disallow: /browser
 
