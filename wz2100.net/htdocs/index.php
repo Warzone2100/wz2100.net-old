@@ -9,7 +9,7 @@ include_once(dirname(__FILE__).'/lib/warzone.inc.php');
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-    <title>Warzone 2100: A Real-Time Strategy game</title> 
+    <title>Warzone 2100: A Free And Open Source Real-Time Strategy Game</title>
 
     <link rel="shortcut icon" href="<?php echo $protocol; ?>static.wz2100.net/favicon.ico" type="image/x-icon" />
     <link rel="alternate" type="application/atom+xml" title="Warzone 2100 News" href="<?php echo $protocol; ?>www.wz2100.net/feed.atom" />
@@ -68,6 +68,9 @@ var isadmin = <?php echo $isadmin?'true':'false'; ?>;
         </p>
         <p>
           The game offers campaign, multi-player, and single-player skirmish modes. An extensive tech tree with <a href="<?php echo $protocol; ?>guide.wz2100.net/r/tech-tree">over 400 different technologies</a>, combined with the unit design system, allows for a wide variety of possible units and tactics.
+        </p>
+        <p>
+          Warzone 2100 was originally developed as a commercial game by Pumpkin Studios and published in 1999, and was released as open source by them in 2004, for the community to continue working on it.
         </p>
         <p class="backforward">
           <a href="<?php echo $protocol; ?>guide.wz2100.net/intro">Read more &raquo;</a>
